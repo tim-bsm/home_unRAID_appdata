@@ -1,0 +1,3 @@
+# Allow the following directories/files for traefik
+!/config/*
+/config/usersfile

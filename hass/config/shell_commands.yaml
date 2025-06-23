@@ -1,0 +1,6 @@
+---
+
+# These commands are used to control various devices via Wake-on-LAN and shutdown commands.
+turn_off_tim_win10: "net rpc shutdown -t 10 -C 'hass is shutting down this pc' -I $HASS_WOL_TIM_WIN10_IP -U $HASS_WOL_TIM_WIN10_CREDENTIALS"
+turn_off_haribo: "net rpc shutdown -t 10 -C 'hass is shutting down this pc' -I $HASS_WOL_HARIBO_IP -U $HASS_WOL_HARIBO_CREDENTIALS"
+turn_off_primavera: "net rpc shutdown -t 10 -C 'hass is shutting down this pc' -I $HASS_WOL_PRIMAVERA_IP -U $HASS_WOL_PRIMAVERA_CREDENTIALS"

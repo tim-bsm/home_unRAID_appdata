@@ -1,5 +1,8 @@
 # Ignore everything
 *
+# But also scan subdirectories
+!*/
 
-!.gitignore
-!README.md
+# Allow specific files and directories
+!*/.gitignore
+!*/README.md

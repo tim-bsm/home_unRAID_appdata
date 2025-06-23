@@ -1,0 +1,37 @@
+---
+
+# Gas Prices Card
+view_layout:
+  grid-area: "gas"
+  show:
+    # Only show when screen-width is larger than 800px
+    mediaquery: "(min-width: 800px)"
+type: "vertical-stack"
+cards:
+  # Stack for AVIA and Lorinser
+  - type: "horizontal-stack"
+    cards:
+      - type: "custom:decluttering-card"
+        template: "template_card_gas"
+        variables:
+          - entity: "sensor.gas_avia_e10"
+          - name: "AVIA E10"
+      - type: "custom:decluttering-card"
+        template: "template_card_gas"
+        variables:
+          - entity: "sensor.gas_lorinser_e10"
+          - name: "Lorinser E10"
+  
+  # Stack for AGIP and JET
+  - type: "horizontal-stack"
+    cards:
+      - type: "custom:decluttering-card"
+        template: "template_card_gas"
+        variables:
+          - entity: "sensor.gas_agip_e10"
+          - name: "AGIP E10"
+      - type: "custom:decluttering-card"
+        template: "template_card_gas"
+        variables:
+          - entity: "sensor.gas_jet_e10"
+          - name: "JET E10"

@@ -1,0 +1,73 @@
+---
+
+# Define a template for a card that controls multiple camera entities with two-way-audio.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_frigate:
+  card:
+    type: custom:frigate-card
+    cameras:
+      - camera_entity: "camera.[[camera1]]"
+        frigate:
+          camera_name: "[[camera1]]"
+        live_provider: go2rtc
+        # Use webrtc for two way audio and _sub to get stream with lower quality
+        go2rtc:
+          stream: "[[camera1]]_sub"
+          modes:
+            - webrtc
+      - camera_entity: "camera.[[camera2]]"
+        frigate:
+          camera_name: "[[camera2]]"
+        live_provider: go2rtc
+        # Use webrtc for two way audio and _sub to get stream with lower quality
+        go2rtc:
+          stream: "[[camera2]]_sub"
+          modes:
+            - webrtc
+    # Stop card from changing its height when loading stream
+    dimensions:
+      aspect_ratio_mode: static
+      aspect_ratio: "24:9"
+    live:
+      # Don't show hambruger menu on the right
+      controls:
+        thumbnails:
+          mode: none
+      auto_mute:
+        - unselected # when camera is unselected in carousel grid
+        - hidden # when camera becomes hidden (e.g. browser tab change)
+      auto_pause: [] # don't auto pause ever
+      auto_play:
+        - selected # when camera is selected in carousel grid
+        - visible # when camera becomes visible (e.g. browser tab change)
+      auto_unmute: [] # don't auto unmute ever
+      lazy_load: true
+      preload: false
+    media_viewer:
+      auto_mute:
+        - unselected # when media is unselected in carousel grid
+        - hidden # when media becomes hidden (e.g. browser tab change)
+      auto_pause:
+        - unselected # "
+        - hidden # "
+    view:
+      actions:
+        # Fullscreen on douple tap
+        double_tap_action:
+          action: custom:frigate-card-action
+          frigate_card_action: fullscreen
+    menu:
+      buttons:
+        cameras:
+          enabled: false
+        clips:
+          enabled: false
+        display_mode:
+          enabled: false
+        microphone:
+          enabled: true
+        snapshots:
+          enabled: false
+        timeline:
+          enabled: false
+    

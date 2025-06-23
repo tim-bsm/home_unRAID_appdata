@@ -1,0 +1,2 @@
+# Allow the following directories/files for frigate
+!/config.yaml

@@ -1,0 +1,76 @@
+---
+
+# Define a template for a card that controls a fan entity and shows graphs.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_fan:
+  card:
+    type: "vertical-stack"
+    cards:
+      # Control climate
+      - view_layout:
+          grid-area: "controls"
+        type: "custom:button-card"
+        template: "card_fan"
+        entity: "[[entity_fan]]"
+        variables:
+          ulm_card_fan_color: "blue"
+          ulm_card_fan_enable_slider: false
+          ulm_card_fan_enable_button: false
+          ulm_card_fan_force_background_color: false
+          # Open pop up on tap
+          ulm_card_tap_action: "more-info"
+          ulm_name_tap_action: "more-info"
+      
+      # Add climate cards
+      - view_layout:
+          grid-area: "graphs"
+        type: "horizontal-stack"      
+        cards:
+          # Show temperature in graph
+          - type: "custom:button-card"
+            template: "card_graph"
+            card_mod:
+              style: |
+                ha-card {
+                  --card-mod-icon-color: var(--google-red);
+                }
+            entity: "[[sensor_temperature]]"
+            variables:
+              ulm_card_graph_color: "var(--google-red)"
+              ulm_card_graph_name: "Temperatur"
+              ulm_card_graph_entity: "[[sensor_temperature]]"
+              ulm_card_graph_hours: 24
+              ulm_card_graph_group_by: "interval"
+          
+          # Show air quality in graph
+          - type: "custom:button-card"
+            template: "card_graph"
+            card_mod:
+              style: |
+                ha-card {
+                  --card-mod-icon-color: var(--google-green);
+                }
+            entity: "[[sensor_quality]]"
+            variables:
+              ulm_card_graph_color: "var(--google-green)"
+              ulm_card_graph_name: "Qualität"
+              ulm_card_graph_entity: "[[sensor_quality]]"
+              ulm_card_graph_hours: 24
+              ulm_card_graph_group_by: "interval"
+          
+          # Show humidity in graph
+          - type: "custom:button-card"
+            template: "card_graph"
+            card_mod:
+              style: |
+                ha-card {
+                  --card-mod-icon-color: var(--google-blue);
+                }
+            entity: "[[sensor_humidity]]"
+            variables:
+              ulm_card_graph_color: "var(--google-blue)"
+              ulm_card_graph_name: "Luftfeuchtigkeit"
+              ulm_card_graph_entity: "[[sensor_humidity]]"
+              ulm_card_graph_hours: 24
+              ulm_card_graph_group_by: "interval"
+      

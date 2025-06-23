@@ -1,0 +1,72 @@
+- id: '1738609170250'
+  alias: Activate scene arbeiten on scene computer_an
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - scene.computer_an
+  conditions: []
+  actions:
+  - action: script.activate_scene_arbeiten
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1738609270607'
+  alias: Activate scene arbeiten on scene computer an
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - scene.computer_an
+  conditions: []
+  actions:
+  - action: script.activate_scene_arbeiten
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1738609375303'
+  alias: Activate scene arbeiten on scene computer_an
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - scene.computer_an
+  conditions: []
+  actions:
+  - action: script.activate_scene_arbeiten
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1738609585376'
+  alias: Activate scene arbeiten on scene computer an
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - scene.computer_an
+    from:
+    to:
+  conditions: []
+  actions:
+  - action: script.activate_scene_arbeiten
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1738609703303'
+  alias: Activate scene arbeiten on scene computer an
+  description: ''
+  triggers:
+  - event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.arbeiten
+    trigger: event
+  conditions: []
+  actions:
+  - data: {}
+    target:
+      entity_id: script.activate_scene_arbeiten
+    action: script.turn_on
+  mode: restart

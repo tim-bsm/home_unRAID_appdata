@@ -1,0 +1,26 @@
+---
+
+# Add buttons to control locks
+view_layout:
+  grid-area: locks
+type: horizontal-stack
+cards:
+  # Add Haustür
+  - type: custom:decluttering-card
+    template: template_card_lock
+    variables:
+      - entity_lock: lock.nuki_haus_lock
+      - name_lock: Haustür
+      - bool_is_battery_sensor_binary: true
+      - sensor_battery: binary_sensor.nuki_haus_battery_critical
+      - sensor_door_state: sensor.nuki_haus_state
+  
+  # Add Wohnungstür
+  - type: custom:decluttering-card
+    template: template_card_lock
+    variables:
+      - entity_lock: lock.nuki_wohnungstur_lock
+      - name_lock: Wohnungstür
+      - bool_is_battery_sensor_binary: false
+      - sensor_battery: sensor.nuki_wohnungstur_battery
+      - sensor_door_state: sensor.nuki_wohnungstur_state

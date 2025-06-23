@@ -1,0 +1,50 @@
+---
+
+# This is the main dashboard for the home, featuring various cards and popups.
+title: "Home"
+path: "home"
+icon: "mdi:home"
+type: "custom:layout-card"
+layout_type: "grid"
+layout:
+  # Define the amount and size of columns
+  grid-template-columns: "0.5em repeat(6, 1fr) 0.5em"
+  # Define the size of rows starting from top row in the grid-template-areas
+  grid-template-rows: "3.5em 0.5em min-content min-content 0.7em min-content"
+  # Use grid-template-areas to define the layout
+  grid-template-areas: |
+    ".    chips     chips     chips     chips     chips     chips     ."
+    ".    .         .         .         .         .         .         ."
+    ".    cameras   cameras   cameras   cameras   weather   weather   ."
+    ".    locks     locks     locks     garages   garages   garages   ."
+    ".    .         .         .         .         .         .         ."
+    ".    gas       gas       rooms     rooms     rooms     rooms     ."
+    ".    popups    popups    popups    popups    popups    popups    ."
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "100%"
+      grid-template-rows: "3.5em 0.5em min-content min-content min-content 0.7em min-content"
+      grid-template-areas: |
+        "chips"
+        "."
+        "cameras"
+        "locks"
+        "garages"
+        "."
+        "rooms"
+cards:
+  # Include cards
+  - !include "content/chips.yaml"
+  - !include "content/cameras.yaml"
+  - !include "content/weather.yaml"
+  - !include "content/locks.yaml"
+  - !include "content/garages.yaml"
+  - !include "content/gas.yaml"
+  - !include "content/rooms.yaml"
+
+  # Include popups
+  - !include "popups/climate.yaml"
+  - !include "popups/network.yaml"
+  - !include "popups/tim.yaml"
+  - !include "popups/dad.yaml"

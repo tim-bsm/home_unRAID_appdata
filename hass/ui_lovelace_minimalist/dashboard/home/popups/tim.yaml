@@ -1,0 +1,143 @@
+---
+
+# This pop-up shows all entities of the specific room.
+view_layout:
+  grid-area: "popup"
+type: "vertical-stack"
+cards:
+  # Use custom:bubble-card to create a pop-up
+  - type: "custom:bubble-card"
+    card_type: "pop-up"
+    hash: "#tim"
+    name: "Tim"
+    entity: "scene.tim_aus"
+    icon: "mdi:nintendo-game-boy"
+    width_desktop: "80%"
+    shadow_opacity: 70
+    # Make bubble card look similar to minimalist
+    styles: |
+      .bubble-button-card-container {
+        background: var(--card-background-color) !important;
+      }
+      .bubble-icon {
+        opacity: 1 !important;
+      }
+      .bubble-close-button{
+        background: var(--card-background-color) !important;
+      }
+      
+  
+  ###
+  # Media tab
+  ###
+
+  # Only show this tab for the tfb and admin roles
+  - type: "custom:state-switch"
+    entity: "user"
+    default: "default"
+    states:
+      tfb:
+        type: "custom:decluttering-card"
+        # Use template defined in ../templates
+        template: "template_card_tim_media"
+      admin:
+        type: "custom:decluttering-card"
+        # Use template defined in ../templates
+        template: "template_card_tim_media"
+      default:
+        type: "custom:button-card"
+        # Use template defined in ../templates
+        color_type: "blank-card"
+      
+
+  ###
+  # Light tab
+  ###
+
+  # Add separator
+  - type: "custom:bubble-card"
+    card_type: "separator"
+    name: "Light"
+    icon: "mdi:home-lightbulb-outline"
+    # Add sub-button for light scene
+    sub_button:
+      - entity: "light.tim"
+        show_state: true
+        show_background: false
+  
+  # Add lights to tab
+  - type: "horizontal-stack"
+    cards:
+      # Decke
+      - type: "custom:decluttering-card"
+        # Use template defined in ../templates
+        template: "template_card_bubble_light"
+        variables:
+          - entity: "light.decke"
+          - name: "Decke"
+          - icon: "mdi:ceiling-light-outline"
+      
+      # Regal
+      - type: "custom:decluttering-card"
+        # Use template defined in ../templates
+        template: "template_card_bubble_light"
+        variables:
+          - entity: "light.regal"
+          - name: "Regal"
+          - icon: "mdi:led-strip-variant"
+
+  # Add more lights
+  - type: "horizontal-stack"
+    cards:
+      # Monitor Links
+      - type: "custom:decluttering-card"
+        # Use template defined in ../templates
+        template: "template_card_bubble_light"
+        variables:
+          - entity: "light.monitor_links"
+          - name: "Monitor Links"
+      
+      # Monitor Rechts
+      - type: "custom:decluttering-card"
+        # Use template defined in ../templates
+        template: "template_card_bubble_light"
+        variables:
+          - entity: "light.monitor_rechts"
+          - name: "Monitor Rechts"
+  
+  # Add Bett light
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_bubble_light"
+    variables:
+      - entity: "light.bett"
+      - name: "Bett"
+      - icon: "mdi:led-strip-variant"
+
+
+  ###
+  # Climate tab
+  ###
+
+  # Add separator
+  - type: "custom:bubble-card"
+    card_type: "separator"
+    name: "Climate"
+    icon: "mdi:home-thermometer-outline"
+    # Add sub-button with temperature sensor
+    sub_button:
+      - name: "Temperatur"
+        entity: "sensor.tim_lufter_temperature"
+        show_state: true
+        show_background: false
+  
+  # Add fan with graphs
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_fan"
+    variables:
+      - entity_fan: "fan.tim_lufter"
+      - sensor_temperature: "sensor.tim_lufter_temperature"
+      - sensor_quality: "sensor.tim_lufter_air_quality_index"
+      - sensor_humidity: "sensor.tim_lufter_humidity"
+  

@@ -1,0 +1,28 @@
+---
+
+# This pop-up shows all entities of the specific room.
+view_layout:
+  grid-area: "popup"
+type: "vertical-stack"
+cards:
+  # Use custom:bubble-card to create a pop-up
+  - type: "custom:bubble-card"
+    card_type: "pop-up"
+    hash: "#dad"
+    name: "Dad"
+    # entity: "scene.tim_aus"
+    icon: "mdi:pac-man"
+    width_desktop: "80%"
+    shadow_opacity: 70
+    # Make bubble card look similar to minimalist
+    styles: |
+      .bubble-button-card-container {
+        background: var(--card-background-color) !important;
+      }
+      .bubble-icon {
+        opacity: 1 !important;
+      }
+      .bubble-close-button{
+        background: var(--card-background-color) !important;
+      }
+      

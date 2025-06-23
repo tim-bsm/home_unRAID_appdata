@@ -1,0 +1,39 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named "themes"
+  extra_module_url:
+    - "/hacsfiles/lovelace-card-mod/card-mod.js"
+
+# Include other configs
+automation: !include "config/automations.yaml"
+binary_sensor: !include "config/binary_sensors.yaml"
+homekit: !include "config/homekit.yaml"
+input_text: !include "config/input_texts.yaml"
+scene: !include "config/scenes.yaml"
+script: !include "config/scripts.yaml"
+sensor: !include "config/sensors.yaml"
+shell_command: !include "config/shell_commands.yaml"
+switch: !include "config/switches.yaml"
+waste_collection_schedule: !include "config/waste.yaml"
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    # - "0.0.0.0/0" # Wildcard for all Proxies -> !ONLY DURING TESTING!
+    - !env_var HASS_TRAEFIK_IP # Add traefik proxy
+
+
+###
+# Activate Integrations for yaml
+###
+
+lovelace:
+  mode: "yaml"
+  resources: !include "config/resources.yaml"
+wake_on_lan:
+additional_ca:
+  # Add from /config/additional_ca
+  private_root_ca: "root_CA.crt"

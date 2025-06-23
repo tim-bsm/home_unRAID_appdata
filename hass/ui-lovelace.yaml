@@ -1,0 +1,2 @@
+# Include the main configuration file from UI Lovelace Minimalist
+!include ui_lovelace_minimalist/dashboard/ui-lovelace.yaml

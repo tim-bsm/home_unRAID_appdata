@@ -1,0 +1,25 @@
+---
+
+# Inspired by https://community.home-assistant.io/t/lovelace-ui-minimalist/322687/2739
+
+# Import templates
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+decluttering_templates: !include_dir_merge_named "./templates"
+
+# Define the kiosk dashboard configuration to hide header and sidebar
+kiosk_mode:
+  non_admin_settings:
+    hide_header: true
+    hide_sidebar: true
+    # TODO: change kiosk
+    # mobile_settings:
+    #   hide_sidebar: false
+    #   ignore_entity_settings: true
+    #   custom_width: 768
+
+# Define the main dashboard
+title: "Minimalist"
+theme: "minimalist-desktop"
+type: custom:grid-layout
+views:
+  - !include home/main.yaml

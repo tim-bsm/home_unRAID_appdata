@@ -1,0 +1,26 @@
+---
+
+###
+# WOL
+###
+
+- platform: wake_on_lan
+  name: WOL Tim Win10
+  mac: !env_var HASS_WOL_TIM_WIN10_MAC
+  host: !env_var HASS_WOL_TIM_WIN10_IP
+  turn_off:
+    service: shell_command.turn_off_tim_win10
+
+- platform: wake_on_lan
+  name: WOL Haribo
+  mac: !env_var HASS_WOL_HARIBO_MAC
+  host: !env_var HASS_WOL_HARIBO_IP
+  turn_off:
+    service: shell_command.turn_off_haribo
+
+- platform: wake_on_lan
+  name: WOL Primavera
+  mac: !env_var HASS_WOL_PRIMAVERA_MAC
+  host: !env_var HASS_WOL_PRIMAVERA_IP
+  turn_off:
+    service: shell_command.turn_off_primavera

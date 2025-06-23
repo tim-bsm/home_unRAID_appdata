@@ -1,0 +1,15 @@
+---
+
+# Define a template for a card that controls a button to open garages.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_garage:
+  card:
+    type: custom:button-card
+    template: card_cover
+    entity: "[[entity_garage]]" 
+    variables:
+      ulm_card_cover_name: "[[name_garage]]"
+      ulm_card_cover_enable_controls: false
+      ulm_card_cover_enable_slider: false
+      ulm_card_cover_icon: mdi:garage
+  

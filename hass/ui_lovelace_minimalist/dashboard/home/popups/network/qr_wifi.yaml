@@ -1,0 +1,9 @@
+---
+
+# Create a QR code for Wi-Fi network connection
+view_layout:
+  grid-area: "qr_wifi"
+type: "picture-entity"
+entity: "image.qr_wifi"
+show_name: false
+show_state: false

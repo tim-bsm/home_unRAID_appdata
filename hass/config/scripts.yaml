@@ -1,0 +1,7 @@
+---
+
+activate_scene_arbeiten:
+  sequence:
+    - action: scene.turn_on
+      target:
+        entity_id: scene.arbeiten

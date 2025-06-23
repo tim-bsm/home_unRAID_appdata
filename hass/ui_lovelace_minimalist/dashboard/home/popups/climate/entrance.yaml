@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: entrance
+type: custom:decluttering-card
+# Use template defined in ../templates
+template: template_card_climate
+variables:
+  - entity_climate: climate.hmip_sensor_flureingang
+  - name_room: Flur / Eingang
+  - sensor_battery: binary_sensor.hmip_sensor_flureingang_batterie
+  - sensor_temperature: sensor.hmip_sensor_flureingang_temperatur
+  - sensor_humidity: sensor.hmip_sensor_flureingang_luftfeuchtigkeit

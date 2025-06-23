@@ -1,0 +1,4 @@
+# > Traefik
+traefik.enable=true
+traefik.http.routers.api.service=api@internal
+#traefik.http.routers.traefik.middlewares=traefikAuth@file,default@file

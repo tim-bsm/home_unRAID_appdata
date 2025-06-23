@@ -1,0 +1,3 @@
+# > Traefik
+traefik.enable=true
+traefik.http.services.pihole.loadbalancer.server.port=80

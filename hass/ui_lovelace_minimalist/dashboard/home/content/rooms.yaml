@@ -1,0 +1,32 @@
+---
+
+# Add buttons to open popups of the specific rooms
+view_layout:
+  grid-area: "rooms"
+type: "horizontal-stack"
+# TODO: DELME
+# type: grid
+# columns: 2
+# styles:
+#   card:
+#     - height: 29em
+# square: false
+cards:
+  # Tim
+  - type: "custom:button-card"
+    template: "card_navigate"
+    variables:
+      ulm_card_navigate_path: "#tim"
+      ulm_card_navigate_title: "Tim"
+      ulm_card_navigate_icon: "mdi:nintendo-game-boy"
+      ulm_card_navigate_color: "var(--color-red)"
+  
+  # Dad
+  - type: "custom:button-card"
+    template: "card_navigate"
+    variables:
+      ulm_card_navigate_path: "#dad"
+      ulm_card_navigate_title: "Dad"
+      ulm_card_navigate_icon: "mdi:pac-man"
+      ulm_card_navigate_color: "var(--color-yellow)"
+  

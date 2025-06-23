@@ -1,0 +1,12 @@
+---
+
+# Add camera
+view_layout:
+  grid-area: cameras
+type: custom:decluttering-card
+# Use template defined in ../templates
+template: template_card_frigate
+variables:
+  # Show camera 2 before camera 1 in carousel
+  - camera1: reolink2
+  - camera2: reolink1

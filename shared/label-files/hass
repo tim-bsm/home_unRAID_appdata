@@ -1,0 +1,5 @@
+# > Traefik
+traefik.enable=true
+traefik.http.services.hass.loadbalancer.server.port=8123
+# Leave following empty to override default "traefik-net" as hass uses "host"
+traefik.docker.network=

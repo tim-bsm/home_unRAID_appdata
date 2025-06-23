@@ -1,0 +1,21 @@
+---
+
+# Define a template for a bubble card that controls a light entity.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_bubble_light:
+  default:
+    - name: ""
+    - icon: "mdi:lightbulb-outline"
+  card:
+    type: "custom:bubble-card"
+    card_type: "button"
+    button_type: "slider"
+    entity: "[[entity]]"
+    name: "[[name]]"
+    icon: "[[icon]]"
+    tap_action: 
+      action: "toggle"
+    double_tap_action:
+      action: "more-info"
+    hold_tap_action:
+      action: "more-info"

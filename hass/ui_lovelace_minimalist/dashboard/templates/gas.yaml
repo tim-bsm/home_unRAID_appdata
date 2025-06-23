@@ -1,0 +1,13 @@
+---
+
+# Define a template for a card that shows the current gas prices.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_gas:
+  card:
+    type: "custom:button-card"
+    template: "card_generic_swap"
+    entity: "[[entity]]"
+    variables:
+      - ulm_card_generic_swap_name: "[[name]]"
+      - ulm_card_generic_swap_icon: "mdi:gas-station"
+  

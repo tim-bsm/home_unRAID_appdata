@@ -1,0 +1,31 @@
+---
+
+# Define a template for a card that shows multiple media controls.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_tim_media:
+  card:
+    type: "vertical-stack"
+    cards:
+      # Add separator
+      - type: "custom:bubble-card"
+        card_type: "separator"
+        name: "Media"
+        icon: "mdi:television"
+      
+      # Add PC control through Wake-on-LAN
+      - type: "custom:button-card"
+        template: "custom_card_vncntdev_device_tracker"
+        entity: "switch.wol_tim_win10"
+        variables:
+          custom_card_vncntdev_device_tracker_icon: "mdi:monitor"
+          custom_card_vncntdev_device_tracker_name: "PC"
+          custom_card_vncntdev_device_tracker_status_as_name: false
+      
+      # Add TV control
+      - type: "custom:bubble-card"
+        card_type: "select"
+        entity: "select.tim_harmony_hub_aktivitaten"
+        name: "Fernseher"
+        icon: "mdi:television-classic"
+        show_state: true
+    

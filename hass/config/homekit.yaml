@@ -1,0 +1,27 @@
+---
+
+# Expose some of the Home Assistant entities to HomeKit.
+- name: "hass bridge"
+  port: 21063 # default port for bridge
+  mode: "bridge"
+  filter:
+    include_domains:
+      - "light"
+      - "fan"
+      - "scene"
+    include_entities:
+      - "switch.wol_tim_win10"
+    exclude_entities:
+      - "light.tim"
+      - "scene.tim_nacht"
+      - "scene.tim_juli"
+      - "scene.tim_computer"
+
+# Expose the TV remote control to HomeKit.
+- name: "Fernseher"
+  port: 21604
+  mode: "accessory"
+  filter:
+    include_entities:
+      - "remote.tim_harmony_hub"
+  

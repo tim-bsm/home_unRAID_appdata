@@ -1,0 +1,68 @@
+---
+
+- name: "Arbeiten"
+  entities:
+    light.regal:
+      state: "on"
+      brightness: 255
+      hs_color: [220, 8.235]
+      rgb_color: [234, 241, 255]
+      xy_color: [0.306, 0.3146]
+    light.monitor_links:
+      state: "on"
+      brightness: 255
+      hs_color: [220, 8.235]
+      rgb_color: [234, 241, 255]
+      xy_color: [0.306, 0.3146]
+    light.monitor_rechts:
+      state: "on"
+      brightness: 255
+      hs_color: [220, 8.235]
+      rgb_color: [234, 241, 255]
+      xy_color: [0.306, 0.3146]
+    light.decke: "off"
+    light.bett: "off"
+
+- name: "Computer"
+  # Use automation to turn on "arbeiten" scene as scenes can't activate other scenes
+  entities:
+    switch.wol_tim_win10: "on"
+
+- name: "Juli"
+  entities:
+    light.regal:
+      state: "on"
+      brightness: 63
+      hs_color: [233.125, 75.294]
+      rgb_color: [63, 85, 255]
+      xy_color: [0.1542, 0.086]
+    light.monitor_links:
+      state: "on"
+      brightness: 63
+      hs_color: [233.125, 75.294]
+      rgb_color: [63, 85, 255]
+      xy_color: [0.1542, 0.086]
+    light.monitor_rechts:
+      state: "on"
+      brightness: 63
+      hs_color: [266.39, 94.51]
+      rgb_color: [120, 14, 255]
+      xy_color: [0.2046, 0.0725]
+    light.decke:
+      state: "on"
+      brightness: 63
+      hs_color: [266.39, 94.51]
+      rgb_color: [120, 14, 255]
+      xy_color: [0.2046, 0.0725]
+    light.bett:
+      state: "on"
+      brightness: 63
+      hs_color: [263.171, 96.471]
+      rgb_color: [104, 9, 255]
+      xy_color: [0.1862, 0.0636]
+  
+- name: "Tim aus"
+  entities:
+    light.tim: "off"
+    remote.tim_harmony_hub: "off"
+  

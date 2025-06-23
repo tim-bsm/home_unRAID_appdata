@@ -1,0 +1,118 @@
+---
+
+# Commented out lines in '/mnt/user/appdata/hass/custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/card_templates/cards/card_thermostat.yaml' because of:
+# https://www.reddit.com/r/homeassistant/comments/1hw3rlt/thermostat_card_not_working_as_expected_in_ui/?tl=de&utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+# https://github.com/UI-Lovelace-Minimalist/UI/issues/1530#issuecomment-2332501716
+
+
+# Define a template for a card that controls a climate entity and shows graphs.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_climate:
+  card:
+    # Use custom:mod-card to remove space created by nesting grids
+    # https://github.com/thomasloven/lovelace-layout-card/issues/137#issuecomment-1789629405
+    type: "custom:mod-card"
+    card_mod:
+      style:
+        layout-card$:
+          grid-layout$: |
+            :host {
+              padding: 0rem !important;
+            }
+            #root {
+              margin: 0rem !important;
+            }
+            #root > * {
+              margin: 0.1rem !important;
+            }
+    card:
+      type: "custom:layout-card"
+      layout_type: "grid"
+      layout:
+        grid-template-columns: "100%"
+        grid-template-rows: "min-content"
+        grid-gap: "5px" # compensate removed space for nesting grids
+        grid-template-areas: |
+          "controls"
+          "graphs"
+        mediaquery:
+          # Mobile
+          "(max-width: 800px)":
+            grid-template-columns: "100%"
+            grid-template-rows: "min-content"
+            grid-template-areas: |
+              "controls"
+      cards:
+        # Control climate
+        - view_layout:
+            grid-area: "controls"
+          type: "custom:button-card"
+          card_mod:
+            style: |
+              ha-card {
+                --card-mod-icon-color: var(--primary-text-color);
+                background: var(--card-background-color) !important;
+              }
+          template:
+            - "card_thermostat"
+            - "battery_info"
+          entity: "[[entity_climate]]"
+          variables:
+            ulm_card_thermostat_icon: "mdi:gas-burner"
+            ulm_card_thermostat_name: "Heizung [[name_room]]"
+            ulm_card_thermostat_enable_popup: true
+            # Open pop up on tap
+            ulm_card_tap_action: "more-info"
+            ulm_icon_tap_action: "more-info"
+            ulm_name_tap_action: "more-info"
+            # Battery info
+            ulm_battery_entity: "[[sensor_battery]]"
+        
+        # Add climate cards
+        - view_layout:
+            grid-area: "graphs"
+            show:
+              # Only show when screen-width is larger than 800px
+              mediaquery: "(min-width: 800px)"
+          type: "horizontal-stack"      
+          cards:
+            # Show temperature in graph
+            - type: "custom:button-card"
+              template: "card_graph"
+              card_mod:
+                style: |
+                  ha-card {
+                    --card-mod-icon-color: var(--google-red);
+                  }
+              entity: "[[sensor_temperature]]"
+              variables:
+                ulm_card_graph_color: "var(--google-red)"
+                ulm_card_graph_name: "Temperatur"
+                ulm_card_graph_entity: "[[sensor_temperature]]"
+                ulm_card_graph_hours: 24
+                ulm_card_graph_group_by: "interval"
+                # Open pop up on tap
+                ulm_card_tap_action: "more-info"
+                ulm_icon_tap_action: "more-info"
+                ulm_name_tap_action: "more-info"
+            
+            # Show humidity in graph
+            - type: "custom:button-card"
+              template: "card_graph"
+              card_mod:
+                style: |
+                  ha-card {
+                    --card-mod-icon-color: var(--google-blue);
+                  }
+              entity: "[[sensor_humidity]]"
+              variables:
+                ulm_card_graph_color: "var(--google-blue)"
+                ulm_card_graph_name: "Luftfeuchtigkeit"
+                ulm_card_graph_entity: "[[sensor_humidity]]"
+                ulm_card_graph_hours: 24
+                ulm_card_graph_group_by: "interval"
+                # Open pop up on tap
+                ulm_card_tap_action: "more-info"
+                ulm_icon_tap_action: "more-info"
+                ulm_name_tap_action: "more-info"
+        

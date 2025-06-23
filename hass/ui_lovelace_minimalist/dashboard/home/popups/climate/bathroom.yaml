@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "bathroom"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_climate"
+variables:
+  - entity_climate: "climate.hmip_sensor_badezimmer"
+  - name_room: "Badezimmer"
+  - sensor_battery: "binary_sensor.hmip_sensor_badezimmer_batterie"
+  - sensor_temperature: "sensor.hmip_sensor_badezimmer_temperatur"
+  - sensor_humidity: "sensor.hmip_sensor_badezimmer_luftfeuchtigkeit"

@@ -1,0 +1,34 @@
+---
+
+- id: '1737740735323'
+  alias: Set default theme
+  description: ''
+  triggers:
+  - trigger: homeassistant
+    event: start
+  conditions: []
+  actions:
+  - action: frontend.set_theme
+    metadata: {}
+    data:
+      mode: dark
+      name: main
+  mode: single
+
+- alias: "Activate scene arbeiten on scene computer an"
+  description: ""
+  trigger:
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: scene
+        service: turn_on
+        service_data:
+          entity_id: scene.computer
+  condition: []
+  action:
+    - service: script.turn_on
+      data: {}
+      target:
+        entity_id: script.activate_scene_arbeiten
+  mode: restart

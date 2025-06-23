@@ -1,0 +1,66 @@
+# Traefik static configuration file (/etc/traefik/traefik.yml)
+# See https://www.benjaminrancourt.ca/a-complete-traefik-configuration/
+# and https://blog.lrvt.de/nginx-proxy-manager-versus-traefik/
+# and https://doc.traefik.io/traefik/getting-started/configuration-overview/#the-static-configuration
+# and https://doc.traefik.io/traefik/reference/static-configuration/cli/
+
+api:
+  dashboard: true                             # Enable the dashboard
+  insecure: false                             # Don't expose the dashboard through :8080
+
+global:
+  checknewversion: true                       # Periodically check if a new version has been released.
+  sendAnonymousUsage: true
+
+entryPoints:
+  # HTTP/HTTPS
+  http:
+    address: :80                              # Create the HTTP entrypoint on port 80
+    http:
+      redirections:                           # HTTPS redirection (80 to 443)
+        entryPoint:
+          to: https                           # The target element
+          scheme: https                       # The redirection target scheme
+  https:
+    address: :443                             # Create the HTTPS entrypoint on port 443
+    asDefault: true                           # Use https as default entrypoint
+    http:
+      tls: true                               # Enable TLS by default
+      middlewares:
+        - default@file                        # Set 'default' middleware from config.yml as default
+
+  # TCP/UDP
+  mqtt:
+    address: :8883
+
+
+# serversTransports:
+#   insecureSkipVerify: true                              # Allow insecure backend connections
+
+log:
+  level: INFO                                 # DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+  # Uncomment if normal logs should be written to a file instead of std_out thus not being able to view in unRAID console
+  # filePath: "/logs/traefik.log"               # Path to the log file
+
+# accessLog:
+#   filePath: "/logs/access.log"                # Path to the file
+#   format: json                                
+#   bufferingSize: 0                            # How many logs should be buffered until written to the file
+#   filters:
+#     statusCodes:                              # Limit logging to the following codes
+#       - "200"
+#       - "300-302"
+#     retryAttempts: true                       # Keep the access logs when at least one retry has happened
+#     minDuration: "10ms"                       # Keep access logs when requests take longer than the specified duration
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"                     # Listen to the UNIX Docker socket
+    exposedByDefault: false                                     # Only expose container that are explicitly enabled (using label traefik.enabled)
+    network: "traefik-net"                                      # Default network to use for connections to all containers.
+    defaultRule: Host(`{{ .Name }}.{{ env "TRAEFIK_HOST" }}`)   # If no URL is given, use the Docker service name
+  
+  file:
+    filename: "/etc/traefik/config.yml"       # Link to the dynamic configuration
+    watch: true                               # Watch for modifications
+  providersThrottleDuration: 10               # Configuration reload frequency

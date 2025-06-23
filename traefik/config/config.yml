@@ -1,0 +1,63 @@
+# Traefik dynamic configuration file
+# See https://www.benjaminrancourt.ca/a-complete-traefik-configuration/
+# and https://blog.lrvt.de/nginx-proxy-manager-versus-traefik/
+# and https://doc.traefik.io/traefik/getting-started/configuration-overview/#the-dynamic-configuration
+
+http:
+  middlewares:
+    # A basic authentification middleware, to protect the Traefik dashboard to anyone except myself
+    # Use with traefik.http.routers.myRouter.middlewares: "traefikAuth@file"
+    traefikAuth:
+      basicAuth:
+        removeHeader: true
+        usersFile: "/etc/traefik/usersfile"               # Contains the users with a hashed password
+
+    # Recommended default middleware for most of the services
+    # Use with traefik.http.routers.myRouter.middlewares: "default@file"
+    # Equivalent of traefik.http.routers.myRouter.middlewares: "default-security-headers@file"
+    # Or enable as default for an entryPoint in the static config
+    default:
+      chain:
+        middlewares:
+          - default-security-headers
+
+    # Add automatically some security headers
+    # Use with traefik.http.routers.myRouter.middlewares: "default-security-headers@file"
+    default-security-headers:
+      headers:
+        browserXssFilter: true                            # X-XSS-Protection=1; mode=block
+        contentTypeNosniff: true                          # X-Content-Type-Options=nosniff
+        forceSTSHeader: true                              # Add the Strict-Transport-Security header even when the connection is HTTP
+        frameDeny: true                                   # X-Frame-Options=deny
+        referrerPolicy: "strict-origin-when-cross-origin"
+        sslRedirect: true                                 # Allow only https requests
+        stsIncludeSubdomains: true                        # Add includeSubdomains to the Strict-Transport-Security header
+        stsPreload: true                                  # Add preload flag appended to the Strict-Transport-Security header
+        stsSeconds: 63072000                              # Set the max-age of the Strict-Transport-Security header (63072000 = 2 years)
+
+tcp:
+  routers:
+    # Add a router for the MQTT service
+    mqtt:
+      entryPoints:
+        - mqtt
+      rule: HostSNI(`mqtt.{{ env "TRAEFIK_HOST" }}`)      # Use the HostSNI rule to match the MQTT service
+      tls: true                                           # Enable TLS for this router
+      service: mosquitto
+  services:
+    # Add a service for the MQTT service
+    mosquitto:
+      loadBalancer:
+        servers:
+          - address: {{ env "TRAEFIK_MQTT_HOST_PORT" }}   # Address (name of the container) and port of the Mosquitto service
+
+tls:
+  stores:
+    # Add certificate to be the standard one
+    default:
+      defaultCertificate:
+        certFile: /certs/{{ env "TRAEFIK_HOST" }}.crt
+        keyFile: /certs/{{ env "TRAEFIK_HOST" }}.pem
+  options:
+    default:
+      minVersion: "VersionTLS13"                          # Minimum TLS Version

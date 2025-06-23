@@ -1,0 +1,103 @@
+---
+
+# Chips as hyperlinks to popups and information cards
+view_layout:
+  grid-area: "chips"
+type: "horizontal-stack"
+cards:
+  ###
+  # Navigation
+  ###
+
+  # Center navigation on mobile
+  - type: "custom:state-switch"
+    entity: "mediaquery"
+    states:
+      "(max-width: 800px)":
+        type: "custom:button-card"
+        color_type: "blank-card"
+  
+
+  # Climate hyperlink to popup
+  - type: "custom:button-card"
+    template: "chip_navigate"
+    label: "Climate"
+    variables:
+      ulm_chip_navigate_path: "#climate"
+      ulm_chip_navigate_icon: "mdi:home-thermometer-outline"
+
+  # Network hyperlink to popup
+  - type: "custom:button-card"
+    template: "chip_navigate"
+    label: "Network"
+    variables:
+      ulm_chip_navigate_path: "#network"
+      ulm_chip_navigate_icon: "mdi:lan"
+
+
+  # Center navigation on mobile
+  - type: "custom:state-switch"
+    entity: "mediaquery"
+    states:
+      "(max-width: 800px)":
+        type: "custom:button-card"
+        color_type: "blank-card"
+
+
+  ###
+  # Other chips
+  ###
+
+  # Show waste only on desktop
+  - type: "custom:state-switch"
+    entity: "mediaquery"
+    states:
+      "(min-width: 800px)":
+        type: "custom:trash-card"
+        entities:
+          - "calendar.mullkalender"
+        layout: "horizontal"
+        event_grouping: true
+        next_days: 366 # search until one year in the future 
+        day_style: "counter" # show days remaining and not date
+        card_style: "chip"
+        alignment_style: "right"
+        color_mode: "icon"
+        with_label: false
+        # Define the waste types and their properties
+        pattern:
+          - type: "waste"
+            label: "Restmüll"
+            icon: "mdi:trash-can"
+            color: "dark-grey"
+            pattern: "Restmülltonne"
+          
+          - type: "organic"
+            label: "Biomüll"
+            icon: "mdi:leaf"
+            color: "brown"
+            pattern: "Biotonne"
+          
+          - type: "recycle"
+            label: "Gelbe Tonne"
+            icon: "mdi:recycle"
+            color: "amber"
+            pattern: "Gelbe Tonne"
+          
+          - type: "paper"
+            label: "Papiertonne"
+            icon: "mdi:newspaper-variant-multiple-outline"
+            color: "indigo"
+            pattern: "Papiertonne"
+  
+  # TODO: Show badge on update
+  # Show badge on update
+  # - type: "custom:state-switch"
+  #   entity: "mediaquery"
+  #   states:
+  #     "(min-width: 800px)":
+  #       type: "custom:button-card"
+  #       template: "chip_update"
+  #       entity: group.updates
+  #       variables:
+  #         ulm_chip_update_path: "/ui-lovelace-minimalist/system"

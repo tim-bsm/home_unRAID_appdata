@@ -1,0 +1,9 @@
+---
+
+# Create input texts to store the WiFi credentials for the qr code
+hass_wifi_ssid:
+  initial: !env_var HASS_WIFI_SSID
+  mode: password
+hass_wifi_password:
+  initial: !env_var HASS_WIFI_PASSWORD
+  mode: password

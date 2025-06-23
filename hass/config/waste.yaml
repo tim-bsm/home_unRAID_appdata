@@ -1,0 +1,8 @@
+---
+
+# Add your waste collection calendar here.
+sources:
+  - name: ics
+    calendar_title: "Müllkalender"
+    args:
+      url: !env_var HASS_WASTE_URL

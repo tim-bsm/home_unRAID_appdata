@@ -1,0 +1,27 @@
+---
+
+# Add buttons to open/close garages
+view_layout:
+  grid-area: garages
+type: horizontal-stack
+cards:
+  # Garagentor Vorne
+  - type: custom:decluttering-card
+    template: template_card_garage
+    variables:
+      - entity_garage: switch.garage_front
+      - name_garage: Vorne
+  
+  # Schiebetür Hinten
+  - type: custom:decluttering-card
+    template: template_card_garage
+    variables:
+      - entity_garage: switch.garage_back
+      - name_garage: Hinten
+
+  # Garagentor Oma
+  - type: custom:decluttering-card
+    template: template_card_garage
+    variables:
+      - entity_garage: switch.garage_oma
+      - name_garage: Oma

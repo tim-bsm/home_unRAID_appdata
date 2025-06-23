@@ -1,0 +1,14 @@
+---
+
+# Add sensors to check for updates
+# https://github.com/basbruss/UI/blob/main/custom_cards/custom_card_homeassistant_updates/README.md
+# TODO: add update sensor
+- platform: template
+  sensors:
+    updater_core:
+      friendly_name: Core
+      device_class: problem
+      value_template: "{{ states('sensor.core_updates') }}"
+      attribute_templates:
+        installed_version: "{{ state_attr('sensor.core_updates', 'installed_version') }}"
+        latest_version: "{{ state_attr('sensor.core_updates', 'latest_version') }}"

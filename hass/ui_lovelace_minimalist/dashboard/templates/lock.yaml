@@ -1,0 +1,22 @@
+---
+
+# Define a template for a card that controls a lock entity.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_lock:
+  card:
+    type: custom:button-card
+    entity: "[[entity_lock]]"
+    template: custom_card_eraycetinay_lock
+    tap_action:
+      action: call-service
+      service: lock.open
+      target:
+        entity_id: "[[entity_lock]]"
+    name: "[[name_lock]]"
+    variables:
+      ulm_custom_card_eraycetinay_lock_battery_sensor_binary: "[[bool_is_battery_sensor_binary]]"
+      ulm_custom_card_eraycetinay_lock_battery_level: "[[sensor_battery]]"
+      ulm_custom_card_eraycetinay_lock_door_open: "[[sensor_door_state]]"
+    triggers_update:
+      - "[[sensor_battery]]"
+      - "[[sensor_door_state]]"
