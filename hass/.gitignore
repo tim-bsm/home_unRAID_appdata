@@ -1,7 +1,8 @@
 # Allow the following directories/files for home assistant
+!/config/*
+!/themes/main/*
+!/ui_lovelace_minimalist/dashboard/**
+/ui_lovelace_minimalist/dashboard/adaptive-dash
 !/automations.yaml
 !/configuration.yaml
 !/ui-lovelace.yaml
-!/config/*
-!/ui_lovelace_minimalist/dashboard/**
-/ui_lovelace_minimalist/dashboard/adaptive-dash

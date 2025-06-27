@@ -11,6 +11,7 @@ http:
       basicAuth:
         removeHeader: true
         usersFile: "/etc/traefik/usersfile"               # Contains the users with a hashed password
+        # TODO: usersfile erstellen lassen wie passwd file bei mosquitto über entrypoint und env file
 
     # Recommended default middleware for most of the services
     # Use with traefik.http.routers.myRouter.middlewares: "default@file"

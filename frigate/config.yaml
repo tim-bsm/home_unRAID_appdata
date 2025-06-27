@@ -1,13 +1,13 @@
 mqtt:
-  enabled: true
-  host: '{FRIGATE_MQTT_HOST}'
-  port: 8883
-  user: '{FRIGATE_MQTT_USER}'
-  password: '{FRIGATE_MQTT_PASSWORD}'
-  topic_prefix: hass/frigate
-  client_id: frigate
-  tls_ca_certs: /config/certs/root_CA.crt
-  tls_insecure: false
+  enabled: false
+#   host: '{FRIGATE_MQTT_HOST}'
+#   port: 8883
+#   user: '{FRIGATE_MQTT_USER}'
+#   password: '{FRIGATE_MQTT_PASSWORD}'
+#   topic_prefix: hass/frigate
+#   client_id: frigate
+#   tls_ca_certs: /config/certs/root_CA.crt
+#   tls_insecure: false
 
 tls:
   enabled: false # disable tls for http, as handled by reverse proxy

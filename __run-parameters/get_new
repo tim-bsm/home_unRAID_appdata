@@ -1,0 +1,36 @@
+#!/bin/bash
+# This script is used to copy the .XML-files (created by
+# unRAID when deploying a new container) into this repository
+# and modify the <WebUI> tag as required, if it exists.
+
+SRC_PATH=/boot/config/plugins/dockerMan/templates-user
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+if [ -d "$SRC_PATH" ]; then
+    echo "Copying XML files from $SRC_PATH to $SCRIPT_DIR ..."
+    cp "$SRC_PATH"/*.xml "$SCRIPT_DIR"
+    echo ""
+
+    echo "Modifying <WebUI> tags in copied XML files (if present) ..."
+
+    for file in "$SCRIPT_DIR"/*.xml; do
+        if [ -f "$file" ]; then
+            # Check if the file contains a <WebUI> tag
+            if grep -q '<WebUI>.*</WebUI>' "$file"; then
+                # Replace the <WebUI> tag content with the new hostname
+                echo "Processing $file ..."
+                sed -i -E 's|(<WebUI>https?://[^./]+)\.[^<]+|\1.eghostname|g' "$file"
+            else
+                echo "Skipping $file (no <WebUI> tag found)"
+            fi
+        fi
+    done
+    echo ""
+
+    echo "XML files copied and modified successfully."
+    echo "Please check the copied files in $SCRIPT_DIR."
+    exit 0
+else
+    echo "The path $SRC_PATH does not exist. Please check your unRAID configuration."
+    exit 1
+fi

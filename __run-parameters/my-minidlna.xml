@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>minidlna</Name>
+  <Repository>binhex/arch-minidlna</Repository>
+  <Registry>https://github.com/binhex/arch-minidlna</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/index.php?topic=45841.0/</Support>
+  <Project>http://sourceforge.net/projects/minidlna/</Project>
+  <Overview>ReadyMedia (formerly known as MiniDLNA) is a simple media server software, with the aim of being fully compliant with DLNA/UPnP-AV clients. It is developed by a NETGEAR employee for the ReadyNAS product line.</Overview>
+  <Category>MediaServer:Video</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/minidlna.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/images/minidlna-icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1735407608</DateInstalled>
+  <DonateText>If you appreciate my work, then please consider buying me a beer :D</DonateText>
+  <DonateLink>https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;amp;hosted_button_id=MM5E27UX6AUU4</DonateLink>
+  <Requires/>
+  <Config Name="Path: /config" Target="/config" Default="/mnt/user/appdata/binhex-minidlna" Mode="rw" Description="This is the container path to your configuration files, e.g. databases, configuration files, logs etc." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/minidlna</Config>
+  <Config Name="Path: /media" Target="/media" Default="/mnt/user" Mode="rw" Description="This is the container path to your media files, e.g. movies, tv, music, pictures etc." Type="Path" Display="always" Required="false" Mask="false">/mnt/user/av</Config>
+  <Config Name="Variable: SCHEDULE_SCAN_DAYS" Target="SCHEDULE_SCAN_DAYS" Default="06" Mode="{3}" Description="Specify the day of the week to scan media, for example to scan on Monday set the value to '00'." Type="Variable" Display="always" Required="false" Mask="false">06</Config>
+  <Config Name="Variable: SCHEDULE_SCAN_HOURS" Target="SCHEDULE_SCAN_HOURS" Default="02" Mode="{3}" Description="Specify the hour ofthe da to scan media, for example to scan at midnight set the value to '00'." Type="Variable" Display="always" Required="false" Mask="false">02</Config>
+  <Config Name="Variable: SCAN_ON_BOOT" Target="SCAN_ON_BOOT" Default="yes|no" Mode="{3}" Description="Specify whether to scan media on startup of the container." Type="Variable" Display="always" Required="false" Mask="false">yes</Config>
+  <Config Name="Variable: SHARED_NETWORK" Target="SHARED_NETWORK" Default="no|yes" Mode="{3}" Description="Specify whether this container is sharing the network with another VPN container, if set to 'yes' then this container will stop when the VPN container is stopped." Type="Variable" Display="always" Required="false" Mask="false">no</Config>
+  <Config Name="Variable: PUID" Target="PUID" Default="99" Mode="{3}" Description="User ID for the running container" Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="Variable: PGID" Target="PGID" Default="100" Mode="{3}" Description="Group ID for the running container" Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="Variable: UMASK" Target="UMASK" Default="000" Mode="{3}" Description="UMASK for the running container" Type="Variable" Display="advanced" Required="true" Mask="false">000</Config>
+</Container>

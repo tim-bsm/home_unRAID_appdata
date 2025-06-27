@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>frigate</Name>
+  <Repository>ghcr.io/blakeblackshear/frigate:stable</Repository>
+  <Registry>https://github.com/blakeblackshear/frigate/pkgs/container/frigate</Registry>
+  <Network>traefik-net</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/98064-support-blakeblackshear-frigate/</Support>
+  <Project>https://frigate.video/</Project>
+  <Overview>A complete and local NVR designed for Home Assistant with AI object detection. Uses OpenCV and Tensorflow to perform realtime object detection locally for IP cameras.&#xD;
+&#xD;
+You cas use a integrated or dedicated GPU (Intel/AMD/Nvidia) to perform the image decoding of the input streams of your cameras.&#xD;
+&#xD;
+Optionally (but highly recommended), you can use multiple devices to perform the object detetion, such as a Google Coral Accelerator Nvidia GPU, OpenVINO (Intel GPU) and Intel NCS2 VPU&#xD;
+&#xD;
+See the documentation for more details about your specific hardware and needs (https://docs.frigate.video/). This is a general templeate that aims to give a fast deoplyment for every user so check all the options carefully and remove all the configurations that you are not going to use.</Overview>
+  <Category>HomeAutomation: Security:</Category>
+  <WebUI>https://frigate.eghostname</WebUI>
+  <TemplateURL>https://gitlab.com/yayitazale/unraid-templates/-/raw/main/yayitazale/frigate.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/yayitazale/unraid-templates/main/frigate.png</Icon>
+  <ExtraParams>-p 172.17.0.1:5000:5000 -p 192.168.214.34:8554:8554 -p 192.168.214.34:8555:8555 -p 192.168.214.34:8555:8555/udp --cap-add=CAP_PERFMON --env-file /mnt/user/appdata/__shared/env-files/frigate.env --label-file /mnt/user/appdata/__shared/label-files/frigate --shm-size=256m --mount type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751032442</DateInstalled>
+  <DonateText>If you like my work please consider Donating.</DonateText>
+  <DonateLink>https://paypal.me/JosebaEgiaLarrinaga</DonateLink>
+  <Requires>br- A valid config.yml file must exist in the config directory to startup the container.br- If you are using a Coral Detector, you must set the container to privileged mode under advanced viewbr- If you are using a PCI Coral instead of a USB one, you must install first the needed drivers going to the CA app and searching for Coral-Driver (thanks to @ich777)br- If you want to use a NVidia card to image decoding and/or detection, you must first install the drivers from CA app (thanks to @ich777), add "--runtime=nvidia" as extra parameter under advanced view and set the "Nvidia Visible Devices" variable with your "GPU UUID" as the value.br- If you want to use the NVidia TensorRT Detector, you have to select the correspondig NVIDIA branch.br- If you want to use a AMD GPU to image decoding you must change driver to "radeonsi"br- With some of the Intel processors, like the J4125, the default driver "iHD" doesn't seem to work correctly for hardware acceleration. You may need to change the driver to "i965"br- If you want to use a NCS2 as detector you have to add "--device-cgroup-rule='c 189:\* rmw'" as extra parameter under advanced view and install the "udev rule" in the unraid host.</Requires>
+  <Config Name="Config Path" Target="/config" Default="/mnt/user/appdata/frigate" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/frigate</Config>
+  <Config Name="Media path" Target="/media/frigate" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/disk1/frigate</Config>
+  <Config Name="Coral TPU/NCS2 Mapping" Target="/dev/bus/usb" Default="" Mode="" Description="Use /dev/bus/usb for USB devices and /dev/apex_0 for PCIe devices (you must install the drivers first for PCIe devices). Remove this if you are not using it" Type="Device" Display="always" Required="false" Mask="false">/dev/bus/usb</Config>
+  <Config Name="Intel/AMD GPU mapping" Target="/dev/dri/renderD128" Default="" Mode="" Description="Intel/AMD GPU mapping for image decode (and detection with Intel OpenVINO). Remove this if you are not using it" Type="Device" Display="always" Required="false" Mask="false">/dev/dri/renderD128</Config>
+  <Config Name="Certificate directory" Target="/config/certs" Default="/mnt/user/appdata/__shared/certs" Mode="ro" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/__shared/certs</Config>
+  <Config Name="Localtime" Target="/etc/localtime" Default="" Mode="rw" Description="" Type="Path" Display="advanced-hide" Required="true" Mask="false">/etc/localtime</Config>
+  <TailscaleStateDir/>
+</Container>

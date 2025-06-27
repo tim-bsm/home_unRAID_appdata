@@ -1,3 +1,4 @@
 # Allow the following directories/files for the shared directory
 !/entrypoints/*
 !/label-files/*
+!*_templ*

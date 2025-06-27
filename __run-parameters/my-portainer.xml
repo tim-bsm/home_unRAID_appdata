@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>portainer</Name>
+  <Repository>portainer/portainer-ce:latest</Repository>
+  <Registry>https://hub.docker.com/r/portainer/portainer-ce/</Registry>
+  <Network>traefik-net</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/69491-support-jj9987-portainer/</Support>
+  <Project>https://portainer.io</Project>
+  <Overview>Portainer is a lightweight management UI which allows you to easily manage your different Docker environments (Docker hosts or Swarm clusters). Portainer is meant to be as simple to deploy as it is to use. It consists of a single container that can run on any Docker engine (can be deployed as Linux container or a Windows native container, supports other platforms too). Portainer allows you to manage all your Docker resources (containers, images, volumes, networks and more) ! It is compatible with the standalone Docker engine and with Docker Swarm mode.</Overview>
+  <Category>Network:Management Productivity: Tools:Utilities</Category>
+  <WebUI>https://portainer.eghostname</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/EMP83/unraid-templates/master/PortainerCE/PortainerCE.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/EMP83/unraid-templates/main/PortainerCE/Portainer.png</Icon>
+  <ExtraParams>--label-file /mnt/user/appdata/__shared/label-files/portainer</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751030847</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Config Storage Path" Target="/data" Default="/mnt/user/appdata/portainer" Mode="rw" Description="This is where Portainer will store it's configuration." Type="Path" Display="advanced-hide" Required="true" Mask="{8}">/mnt/user/appdata/portainer</Config>
+  <Config Name="Docker socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="This is needed for Portainer to connect to Docker." Type="Path" Display="advanced-hide" Required="true" Mask="{8}">/var/run/docker.sock</Config>
+  <TailscaleStateDir/>
+</Container>

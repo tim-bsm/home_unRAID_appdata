@@ -1,7 +1,6 @@
 ---
 
-- id: '1737740735323'
-  alias: Set default theme
+- alias: Set default theme
   description: ''
   triggers:
   - trigger: homeassistant

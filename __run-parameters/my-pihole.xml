@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>pihole</Name>
+  <Repository>pihole/pihole:latest</Repository>
+  <Registry>https://hub.docker.com/r/pihole/pihole</Registry>
+  <Network>traefik-net</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/pi-hole/pi-hole/issues</Support>
+  <Project>https://pi-hole.net/</Project>
+  <Overview>Pi-hole is a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole and optionally a DHCP server, intended for use on a private network. It is designed for low-power embedded devices with network capability, such as the Raspberry Pi, but can be installed on almost any Linux machine. Pi-hole has the ability to block traditional website advertisements as well as advertisements in unconventional places, such as smart TVs and mobile operating system advertisements.</Overview>
+  <Category>Network:Other Other:</Category>
+  <WebUI>https://pihole.eghostname</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/official-pihole.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/images/official-pihole-icon.png</Icon>
+  <ExtraParams>-p 192.168.214.34:53:53 -p 192.168.214.34:53:53/udp --label-file /mnt/user/appdata/__shared/label-files/pihole</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751030628</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Path: /etc/pihole" Target="/etc/pihole" Default="/mnt/user/appdata/official-pihole/pihole" Mode="rw" Description="This is the container path to store pihole configuration files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pihole/pihole</Config>
+  <Config Name="Path: /etc/dnsmasq.d" Target="/etc/dnsmasq.d" Default="/mnt/user/appdata/official-pihole/pihole/dnsmasq" Mode="rw" Description="This is the container path to store dnsmaqs configuration files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pihole/dnsmasq</Config>
+  <Config Name="Variable: DNSMASQ_LISTENING" Target="DNSMASQ_LISTENING" Default="all" Mode="{3}" Description="Specify the DNS settings Interface listening behavior to 'all', required when network is set to 'bridge'." Type="Variable" Display="advanced" Required="true" Mask="false">all</Config>
+  <TailscaleStateDir/>
+</Container>

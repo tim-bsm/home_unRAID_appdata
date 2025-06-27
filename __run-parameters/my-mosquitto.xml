@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>mosquitto</Name>
+  <Repository>cmccambridge/mosquitto-unraid:latest</Repository>
+  <Registry>https://hub.docker.com/r/cmccambridge/mosquitto-unraid/</Registry>
+  <Network>traefik-net</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/cmccambridge/mosquitto-unraid/issues</Support>
+  <Project>https://mosquitto.org</Project>
+  <Overview>This container is a minimal port of the official Eclipse Mosquitto Docker container with minor tweaks to work more conveniently in unRAID.&#xD;
+Configuration&#xD;
+To set up paths and ports, see the descriptions in the unRAID docker settings page.&#xD;
+To further control mosquitto configuration, place a mosquitto.conf file in the config path, or start the container one time and it will write a template mosquitto.conf.example file to the config path for you to copy and edit. For further details, refer to the full README at https://github.com/cmccambridge/mosquitto-unraid/blob/master/README.md</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/cmccambridge/unraid-templates/master/cmccambridge/mosquitto-unraid.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/cmccambridge/mosquitto-unraid/master/media/eclipse-mosquitto.png</Icon>
+  <ExtraParams>--expose 1883 --entrypoint /mosquitto.sh --env-file /mnt/user/appdata/__shared/env-files/mosquitto.env --label-file /mnt/user/appdata/__shared/label-files/mosquitto</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751031757</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Config File" Target="/mosquitto/config/mosquitto-unraid-default.conf" Default="/mnt/user/appdata/mosquitto/mosquitto-unraid-default.conf" Mode="ro" Description="Store codemosquitto.conf/code (or additional code*.conf/code files). emContainer Path: code/mosquitto/config/code/em" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/mosquitto/mosquitto-unraid-default.conf</Config>
+  <Config Name="Own entrypoint (start script)" Target="/mosquitto.sh" Default="/mnt/user/appdata/__shared/entrypoints/mosquitto.sh" Mode="ro" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/__shared/entrypoints/mosquitto.sh</Config>
+  <TailscaleStateDir/>
+</Container>

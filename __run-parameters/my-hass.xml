@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>hass</Name>
+  <Repository>ghcr.io/home-assistant/home-assistant:stable</Repository>
+  <Registry>https://github.com/home-assistant/core/pkgs/container/home-assistant</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://www.home-assistant.io/help/</Support>
+  <Project>https://www.home-assistant.io</Project>
+  <Overview>Home Assistant Container runs the core of the Home Assistant home automation platform. It focuses on local control and privacy. Track and control all devices at home and automate control.</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI>https://hass.eghostname</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
+  <ExtraParams>--env-file /mnt/user/appdata/__shared/env-files/hass.env --label-file /mnt/user/appdata/__shared/label-files/hass --entrypoint /hass.sh</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751031716</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Config Directory" Target="/config" Default="/mnt/user/appdata/Home-Assistant-Container" Mode="rw" Description="This path is where Home Assistant will store it's configuration files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hass</Config>
+  <Config Name="Entrypoint script" Target="/hass.sh" Default="/mnt/user/appdata/__shared/entrypoints/hass.sh" Mode="ro" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/__shared/entrypoints/hass.sh</Config>
+  <Config Name="Certs directory" Target="/config/additional_ca" Default="/mnt/user/appdata/__shared/certs" Mode="ro" Description="For hass integration:&#13;&#10;https://github.com/Athozs/hass-additional-ca" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/__shared/certs</Config>
+  <TailscaleStateDir/>
+</Container>

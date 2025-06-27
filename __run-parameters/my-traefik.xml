@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>traefik</Name>
+  <Repository>traefik:latest</Repository>
+  <Registry>https://hub.docker.com/_/traefik</Registry>
+  <Network>traefik-net</Network>
+  <MyIP>10.0.4.2</MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://discord.gg/VWAG7rZ</Support>
+  <Project>https://traefik.io/</Project>
+  <Overview>The world&#x2019;s most popular cloud-native application proxy that helps developers and operations teams build, deploy and run modern microservices applications quickly and easily.&#xD;
+&#xD;
+For a guide on how to install this reverse proxy, head over to our documentation website.&#xD;
+&#xD;
+https://docs.ibracorp.io&#xD;
+&#xD;
+Come join in on the community fun and get support by joining our discord!&#xD;
+&#xD;
+https://discord.gg/VWAG7rZ</Overview>
+  <Category>Productivity: Security: Tools:Utilities Network:Proxy</Category>
+  <WebUI>https://traefik.eghostname</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/ibracorp/unraid-templates/master/traefik/traefik.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/ibracorp/unraid-templates/master/icons/traefik.png</Icon>
+  <ExtraParams>--add-host host.docker.internal:172.17.0.1 --env-file /mnt/user/appdata/__shared/env-files/traefik.env --label-file /mnt/user/appdata/__shared/label-files/traefik -p 192.168.214.33:80:80 -p 192.168.214.33:443:443 -p 192.168.214.34:443:443 -p 192.168.214.33:8883:8883</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751031800</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Config Folder" Target="/etc/traefik" Default="/mnt/user/appdata/traefik" Mode="rw" Description="Appdata Location" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/traefik/config</Config>
+  <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="rw" Description="The default is /var/run/docker.sock&#13;&#10;" Type="Path" Display="always" Required="false" Mask="false">/var/run/docker.sock</Config>
+  <Config Name="Certificates" Target="/certs" Default="/mnt/user/appdata/__shared/certs" Mode="ro" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/__shared/certs</Config>
+  <TailscaleStateDir/>
+</Container>
