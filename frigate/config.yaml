@@ -1,13 +1,13 @@
 mqtt:
-  enabled: false
-#   host: '{FRIGATE_MQTT_HOST}'
-#   port: 8883
-#   user: '{FRIGATE_MQTT_USER}'
-#   password: '{FRIGATE_MQTT_PASSWORD}'
-#   topic_prefix: hass/frigate
-#   client_id: frigate
-#   tls_ca_certs: /config/certs/root_CA.crt
-#   tls_insecure: false
+  enabled: true
+  host: '{FRIGATE_MQTT_HOST}'
+  port: 8883
+  user: '{FRIGATE_MQTT_USER}'
+  password: '{FRIGATE_MQTT_PASSWORD}'
+  topic_prefix: hass/frigate
+  client_id: frigate
+  tls_ca_certs: /config/certs/root_CA.crt
+  tls_insecure: false
 
 tls:
   enabled: false # disable tls for http, as handled by reverse proxy
@@ -16,19 +16,9 @@ ffmpeg:
   hwaccel_args: preset-vaapi
 
 detectors:
-  ov:
-    type: openvino
-    device: GPU
-
-# OpenVINO model configuration
-# https://docs.frigate.video/configuration/object_detectors/#ssdlite-mobilenet-v2
-model:
-  width: 300
-  height: 300
-  input_tensor: nhwc
-  input_pixel_format: bgr
-  path: /openvino-model/ssdlite_mobilenet_v2.xml
-  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+  coral:
+    type: edgetpu
+    device: pci
 
 record:
   enabled: true
