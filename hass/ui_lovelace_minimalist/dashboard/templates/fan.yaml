@@ -31,7 +31,7 @@ template_card_fan:
             template: "card_graph"
             card_mod:
               style: |
-                ha-card {
+                :host ha-card {
                   --card-mod-icon-color: var(--google-red);
                 }
             entity: "[[sensor_temperature]]"
@@ -47,7 +47,7 @@ template_card_fan:
             template: "card_graph"
             card_mod:
               style: |
-                ha-card {
+                :host ha-card {
                   --card-mod-icon-color: var(--google-green);
                 }
             entity: "[[sensor_quality]]"
@@ -63,7 +63,7 @@ template_card_fan:
             template: "card_graph"
             card_mod:
               style: |
-                ha-card {
+                :host ha-card {
                   --card-mod-icon-color: var(--google-blue);
                 }
             entity: "[[sensor_humidity]]"

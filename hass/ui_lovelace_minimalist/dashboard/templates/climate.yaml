@@ -49,7 +49,7 @@ template_card_climate:
           type: "custom:button-card"
           card_mod:
             style: |
-              ha-card {
+              :host ha-card {
                 --card-mod-icon-color: var(--primary-text-color);
                 background: var(--card-background-color) !important;
               }
@@ -81,7 +81,7 @@ template_card_climate:
               template: "card_graph"
               card_mod:
                 style: |
-                  ha-card {
+                  :host ha-card {
                     --card-mod-icon-color: var(--google-red);
                   }
               entity: "[[sensor_temperature]]"
@@ -101,7 +101,7 @@ template_card_climate:
               template: "card_graph"
               card_mod:
                 style: |
-                  ha-card {
+                  :host ha-card {
                     --card-mod-icon-color: var(--google-blue);
                   }
               entity: "[[sensor_humidity]]"
