@@ -1,0 +1,14 @@
+---
+
+# Create input select to switch climate tab
+which_climate:
+  name: "Which climate should be shown?"
+  options:
+    - "Apartment_Floor_Heating"
+    - "Apartment_Heating"
+    # - "Below_Floor_Heating"
+    - "Below_Heating"
+    # - "Rented_Floor_Heating"
+    - "Rented_Heating"
+  initial: "Apartment_Floor_Heating"
+  icon: "mdi:home-thermometer-outline"

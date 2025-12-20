@@ -1,0 +1,50 @@
+---
+
+# Use custom:mod-card to remove space created by nesting grids
+# https://github.com/thomasloven/lovelace-layout-card/issues/137#issuecomment-1789629405
+type: "custom:mod-card"
+card_mod:
+  style:
+    layout-card$:
+      grid-layout$: |
+        :host {
+          padding: 0rem !important;
+        }
+        #root {
+          margin: 0rem !important;
+        }
+        #root > * {
+          margin: 0.1rem !important;
+        }
+card:
+  type: "custom:layout-card"
+  layout_type: "grid"
+  layout:
+    # Define the amount of columns
+    grid-template-columns: "repeat(4, 1fr)"
+    grid-template-rows: "min-content"
+    grid-gap: "calc(0.7em + 5px)" # 5px to compensate removed space for nesting grids
+    # Use grid-template-areas to define the layout
+    grid-template-areas: |
+      "toilet       hallway     dorming_room    bathroom"
+      "guest_room   kitchen     .               ."
+    mediaquery:
+      # Mobile
+      "(max-width: 800px)":
+        grid-template-columns: "100%"
+        grid-template-rows: "min-content"
+        grid-template-areas: |
+          "toilet"
+          "hallway"
+          "dorming_room"
+          "bathroom"
+          "guest_room"
+          "kitchen"
+  # Cards for each underfloor heating entity
+  cards:
+    - !include "0_floor/toilet.yaml"
+    - !include "0_floor/hallway.yaml"
+    - !include "0_floor/dorming_room.yaml"
+    - !include "0_floor/bathroom.yaml"
+    - !include "0_floor/guest_room.yaml"
+    - !include "0_floor/kitchen.yaml"

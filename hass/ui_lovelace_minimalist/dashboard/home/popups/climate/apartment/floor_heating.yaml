@@ -1,0 +1,6 @@
+---
+
+type: "vertical-stack"
+cards:
+  # Add floor heating cards
+  - !include "floor_heating/1_floor.yaml"

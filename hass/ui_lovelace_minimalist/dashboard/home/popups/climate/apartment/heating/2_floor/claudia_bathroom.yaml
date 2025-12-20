@@ -1,0 +1,12 @@
+---
+
+view_layout:
+  grid-area: "claudia_bathroom"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_etrv_claudia_bad"
+  - name_room: "Claudia Badwand"
+  - sensor_battery: "binary_sensor.hmip_etrv_claudia_bad_batterie"
+  - sensor_temperature: "sensor.hmip_etrv_claudia_bad_temperatur"

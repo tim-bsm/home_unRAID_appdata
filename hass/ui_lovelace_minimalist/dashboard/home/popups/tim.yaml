@@ -36,6 +36,10 @@ cards:
     entity: "user"
     default: "default"
     states:
+      # Show nothing as default
+      default:
+        type: "custom:button-card"
+        color_type: "blank-card"
       tfb:
         type: "custom:decluttering-card"
         # Use template defined in ../templates
@@ -44,10 +48,6 @@ cards:
         type: "custom:decluttering-card"
         # Use template defined in ../templates
         template: "template_card_tim_media"
-      default:
-        type: "custom:button-card"
-        # Use template defined in ../templates
-        color_type: "blank-card"
       
 
   ###

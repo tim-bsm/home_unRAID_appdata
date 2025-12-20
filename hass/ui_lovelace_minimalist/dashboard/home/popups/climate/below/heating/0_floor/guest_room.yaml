@@ -1,0 +1,12 @@
+---
+
+view_layout:
+  grid-area: "guest_room"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_etrv_xi_gaestezimmer"
+  - name_room: "Gästezimmer"
+  - sensor_battery: "binary_sensor.hmip_etrv_xi_gaestezimmer_batterie"
+  - sensor_temperature: "sensor.hmip_etrv_xi_gaestezimmer_temperatur"

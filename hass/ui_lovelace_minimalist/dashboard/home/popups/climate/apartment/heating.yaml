@@ -1,0 +1,30 @@
+---
+
+type: "vertical-stack"
+cards:
+  # Add separator for 2. floor
+  - type: "custom:bubble-card"
+    card_type: "separator"
+    name: "2. Floor Heating"
+    icon: "mdi:home-roof"
+
+  # Add heating cards
+  - !include "heating/2_floor.yaml"
+
+  # Add separator for 1. floor
+  - type: "custom:bubble-card"
+    card_type: "separator"
+    name: "1. Floor Heating"
+    icon: "mdi:stairs"
+
+  # Add heating cards
+  - !include "heating/1_floor.yaml"
+
+  # Add separator for 0. floor
+  - type: "custom:bubble-card"
+    card_type: "separator"
+    name: "0. Floor Heating"
+    icon: "mdi:garage"
+  
+  # Add heating cards
+  - !include "heating/0_floor.yaml"

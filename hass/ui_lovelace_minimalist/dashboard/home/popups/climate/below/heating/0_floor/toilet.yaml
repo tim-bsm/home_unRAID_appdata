@@ -1,0 +1,12 @@
+---
+
+view_layout:
+  grid-area: "toilet"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_etrv_xi_wc"
+  - name_room: "WC"
+  - sensor_battery: "binary_sensor.hmip_etrv_xi_wc_batterie"
+  - sensor_temperature: "sensor.hmip_etrv_xi_wc_temperatur"

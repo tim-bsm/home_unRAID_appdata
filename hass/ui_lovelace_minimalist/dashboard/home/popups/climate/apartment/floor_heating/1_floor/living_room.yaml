@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "living_room"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_floor_heating"
+variables:
+  - entity_climate: "climate.hmip_sensor_wohnzimmer"
+  - name_room: "Wohnzimmer"
+  - sensor_battery: "binary_sensor.hmip_sensor_wohnzimmer_batterie"
+  - sensor_temperature: "sensor.hmip_sensor_wohnzimmer_temperatur"
+  - sensor_humidity: "sensor.hmip_sensor_wohnzimmer_luftfeuchtigkeit"

@@ -13,6 +13,7 @@ frontend:
 automation: !include "config/automations.yaml"
 binary_sensor: !include "config/binary_sensors.yaml"
 homekit: !include "config/homekit.yaml"
+input_select: !include "config/input_selects.yaml"
 input_text: !include "config/input_texts.yaml"
 scene: !include "config/scenes.yaml"
 script: !include "config/scripts.yaml"

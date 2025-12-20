@@ -5,9 +5,9 @@
 # https://github.com/UI-Lovelace-Minimalist/UI/issues/1530#issuecomment-2332501716
 
 
-# Define a template for a card that controls a climate entity and shows graphs.
+# Define a template for a card that controls a heating climate entity and shows graphs.
 # This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
-template_card_climate:
+template_card_heating:
   card:
     # Use custom:mod-card to remove space created by nesting grids
     # https://github.com/thomasloven/lovelace-layout-card/issues/137#issuecomment-1789629405
@@ -68,51 +68,23 @@ template_card_climate:
             # Battery info
             ulm_battery_entity: "[[sensor_battery]]"
         
-        # Add climate cards
-        - view_layout:
-            grid-area: "graphs"
-            show:
-              # Only show when screen-width is larger than 800px
-              mediaquery: "(min-width: 800px)"
-          type: "horizontal-stack"      
-          cards:
-            # Show temperature in graph
-            - type: "custom:button-card"
-              template: "card_graph"
-              card_mod:
-                style: |
-                  :host ha-card {
-                    --card-mod-icon-color: var(--google-red);
-                  }
-              entity: "[[sensor_temperature]]"
-              variables:
-                ulm_card_graph_color: "var(--google-red)"
-                ulm_card_graph_name: "Temperatur"
-                ulm_card_graph_entity: "[[sensor_temperature]]"
-                ulm_card_graph_hours: 24
-                ulm_card_graph_group_by: "interval"
-                # Open pop up on tap
-                ulm_card_tap_action: "more-info"
-                ulm_icon_tap_action: "more-info"
-                ulm_name_tap_action: "more-info"
-            
-            # Show humidity in graph
-            - type: "custom:button-card"
-              template: "card_graph"
-              card_mod:
-                style: |
-                  :host ha-card {
-                    --card-mod-icon-color: var(--google-blue);
-                  }
-              entity: "[[sensor_humidity]]"
-              variables:
-                ulm_card_graph_color: "var(--google-blue)"
-                ulm_card_graph_name: "Luftfeuchtigkeit"
-                ulm_card_graph_entity: "[[sensor_humidity]]"
-                ulm_card_graph_hours: 24
-                ulm_card_graph_group_by: "interval"
-                # Open pop up on tap
-                ulm_card_tap_action: "more-info"
-                ulm_icon_tap_action: "more-info"
-                ulm_name_tap_action: "more-info"
-        
+        # Add graph cards
+        # Show temperature in graph
+        - type: "custom:button-card"
+          template: "card_graph"
+          card_mod:
+            style: |
+              :host ha-card {
+                --card-mod-icon-color: var(--google-red);
+              }
+          entity: "[[sensor_temperature]]"
+          variables:
+            ulm_card_graph_color: "var(--google-red)"
+            ulm_card_graph_name: "Temperatur"
+            ulm_card_graph_entity: "[[sensor_temperature]]"
+            ulm_card_graph_hours: 24
+            ulm_card_graph_group_by: "interval"
+            # Open pop up on tap
+            ulm_card_tap_action: "more-info"
+            ulm_icon_tap_action: "more-info"
+            ulm_name_tap_action: "more-info"
