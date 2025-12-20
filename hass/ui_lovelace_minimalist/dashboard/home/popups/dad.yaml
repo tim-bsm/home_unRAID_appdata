@@ -25,4 +25,12 @@ cards:
       .bubble-close-button{
         background: var(--card-background-color) !important;
       }
-      
+  
+  # Add christmas light
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_bubble_light"
+    variables:
+      - entity: "light.smart_christmas_light_cct"
+      - name: "Lichterkette"
+      - icon: "mdi:led-strip-variant"
