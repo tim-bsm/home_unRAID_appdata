@@ -34,3 +34,12 @@ cards:
       - entity: "light.smart_christmas_light_cct"
       - name: "Lichterkette"
       - icon: "mdi:led-strip-variant"
+  
+  # Add power monitor
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_power"
+    variables:
+      - sensor: "sensor.stromleser_ehz_e_in"
+      - name: "Stromverbrauch"
+      - hours: 24

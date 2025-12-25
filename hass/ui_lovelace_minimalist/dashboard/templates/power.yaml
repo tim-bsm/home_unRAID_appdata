@@ -1,0 +1,21 @@
+---
+
+# Define a template for a card that shows a graph with the power.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_power:
+  card:
+    type: "custom:button-card"
+    template: "custom_card_damix48_power_details"
+    entity: "[[sensor]]"
+    variables:
+      ulm_card_power_details_name: "[[name]]"
+      ulm_card_power_details_entity: "[[sensor]]"
+      ulm_card_power_details_hours: "[[hours]]"
+      ulm_card_power_details_24hour: true
+      ulm_card_power_details_thresholds:
+        - value: 0
+          color: "#43A047"
+        - value: 2500
+          color: "#FFA600"
+        - value: 3000
+          color: "#DB4437"
