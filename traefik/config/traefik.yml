@@ -38,7 +38,7 @@ entryPoints:
 #   insecureSkipVerify: true                              # Allow insecure backend connections
 
 log:
-  level: INFO                                 # DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+  level: DEBUG                                # DEBUG, INFO, WARN, ERROR, FATAL, PANIC
   # Uncomment if normal logs should be written to a file instead of std_out thus not being able to view in unRAID console
   # filePath: "/logs/traefik.log"               # Path to the log file
 
@@ -46,12 +46,12 @@ log:
 #   filePath: "/logs/access.log"                # Path to the file
 #   format: json                                
 #   bufferingSize: 0                            # How many logs should be buffered until written to the file
-#   filters:
-#     statusCodes:                              # Limit logging to the following codes
-#       - "200"
-#       - "300-302"
-#     retryAttempts: true                       # Keep the access logs when at least one retry has happened
-#     minDuration: "10ms"                       # Keep access logs when requests take longer than the specified duration
+#   # filters:
+#   #   statusCodes:                              # Limit logging to the following codes
+#   #     - "200"
+#   #     - "300-302"
+#   #   retryAttempts: true                       # Keep the access logs when at least one retry has happened
+#   #   minDuration: "10ms"                       # Keep access logs when requests take longer than the specified duration
 
 providers:
   docker:
