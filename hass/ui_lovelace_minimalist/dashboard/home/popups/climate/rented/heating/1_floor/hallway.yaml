@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "hallway"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_yfe35_th_og_flur"
+  - name_room: "Flur"
+  - sensor_battery: "binary_sensor.hmip_yfe35_th_og_flur_batterie"
+  - sensor_temperature: "sensor.hmip_yfe35_th_og_flur_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_yfe35_th_og_flur_ventil_offnungsgrad"

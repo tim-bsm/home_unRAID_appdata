@@ -6,8 +6,8 @@ type: "custom:decluttering-card"
 # Use template defined in ../templates
 template: "template_card_floor_heating"
 variables:
-  - entity_climate: "climate.hmip_sensor_ankleide"
+  - entity_climate: "climate.hmip_thfb_ankleide"
   - name_room: "Ankleide"
-  - sensor_battery: "binary_sensor.hmip_sensor_ankleide_batterie"
-  - sensor_temperature: "sensor.hmip_sensor_ankleide_temperatur"
-  - sensor_humidity: "sensor.hmip_sensor_ankleide_luftfeuchtigkeit"
+  - sensor_battery: "binary_sensor.hmip_thfb_ankleide_batterie"
+  - sensor_temperature: "sensor.hmip_thfb_ankleide_temperatur"
+  - sensor_humidity: "sensor.hmip_thfb_ankleide_luftfeuchtigkeit"

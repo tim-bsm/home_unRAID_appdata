@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "bathroom_top"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_th_bad_oben"
+  - name_room: "Bad"
+  - sensor_battery: "binary_sensor.hmip_th_bad_oben_batterie"
+  - sensor_temperature: "sensor.hmip_th_bad_oben_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_th_bad_oben_ventil_offnungsgrad"

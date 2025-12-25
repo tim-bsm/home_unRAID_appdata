@@ -26,20 +26,20 @@ card:
     grid-gap: "calc(0.7em + 5px)" # 5px to compensate removed space for nesting grids
     # Use grid-template-areas to define the layout
     grid-template-areas: |
-      "top_bathroom     marisa    claudia_bathroom    claudia_balcony"
+      "bathroom_top     marisa    claudia_bathroom    claudia_balcony"
     mediaquery:
       # Mobile
       "(max-width: 800px)":
         grid-template-columns: "100%"
         grid-template-rows: "min-content"
         grid-template-areas: |
-          "top_bathroom"
+          "bathroom_top"
           "marisa"
           "claudia_bathroom"
           "claudia_balcony"
   # Cards for each underfloor heating entity
   cards:
-    - !include "2_floor/top_bathroom.yaml"
+    - !include "2_floor/bathroom_top.yaml"
     - !include "2_floor/marisa.yaml"
     - !include "2_floor/claudia_bathroom.yaml"
     - !include "2_floor/claudia_balcony.yaml"

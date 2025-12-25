@@ -26,14 +26,16 @@ card:
     grid-gap: "calc(0.7em + 5px)" # 5px to compensate removed space for nesting grids
     # Use grid-template-areas to define the layout
     grid-template-areas: |
-      "bathroom         tim       dining_room     kitchen"
-      "wintergarden_r   .         .               ."
+      "toilet           kitchen_35top   bathroom    tim"
+      "wintergarden_r   dining_room     kitchen     ."
     mediaquery:
       # Mobile
       "(max-width: 800px)":
         grid-template-columns: "100%"
         grid-template-rows: "min-content"
         grid-template-areas: |
+          "toilet"
+          "kitchen_35top"
           "bathroom"
           "tim"
           "dining_room"
@@ -41,6 +43,8 @@ card:
           "wintergarden_r"
   # Cards for each underfloor heating entity
   cards:
+    - !include "1_floor/toilet.yaml"
+    - !include "1_floor/kitchen_35top.yaml"
     - !include "1_floor/bathroom.yaml"
     - !include "1_floor/tim.yaml"
     - !include "1_floor/dining_room.yaml"

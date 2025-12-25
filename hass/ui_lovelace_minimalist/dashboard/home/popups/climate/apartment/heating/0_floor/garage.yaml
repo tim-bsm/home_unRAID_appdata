@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "garage"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_th_garage"
+  - name_room: "Garage"
+  - sensor_battery: "binary_sensor.hmip_th_garage_batterie"
+  - sensor_temperature: "sensor.hmip_th_garage_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_th_garage_ventil_offnungsgrad"

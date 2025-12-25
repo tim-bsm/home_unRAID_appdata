@@ -6,7 +6,8 @@ type: "custom:decluttering-card"
 # Use template defined in ../templates
 template: "template_card_heating"
 variables:
-  - entity_climate: "climate.hmip_etrv_xi_flur"
+  - entity_climate: "climate.hmip_xi_th_flur"
   - name_room: "Flur"
-  - sensor_battery: "binary_sensor.hmip_etrv_xi_flur_batterie"
-  - sensor_temperature: "sensor.hmip_etrv_xi_flur_temperatur"
+  - sensor_battery: "binary_sensor.hmip_xi_th_flur_batterie"
+  - sensor_temperature: "sensor.hmip_xi_th_flur_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_xi_th_flur_ventil_offnungsgrad"

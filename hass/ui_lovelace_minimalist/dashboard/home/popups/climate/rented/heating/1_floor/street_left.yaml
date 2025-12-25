@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "street_left"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_yfe35_th_og_strasse_links"
+  - name_room: "Nadschmuldin"
+  - sensor_battery: "binary_sensor.hmip_yfe35_th_og_strasse_links_batterie"
+  - sensor_temperature: "sensor.hmip_yfe35_th_og_strasse_links_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_yfe35_th_og_strasse_links_ventil_offnungsgrad"

@@ -34,7 +34,7 @@ template_card_heating:
         grid-gap: "5px" # compensate removed space for nesting grids
         grid-template-areas: |
           "controls"
-          "graphs"
+          "graph"
         mediaquery:
           # Mobile
           "(max-width: 800px)":
@@ -70,7 +70,12 @@ template_card_heating:
         
         # Add graph cards
         # Show temperature in graph
-        - type: "custom:button-card"
+        - view_layout:
+            grid-area: "graph"
+            show:
+              # Only show when screen-width is larger than 800px
+              mediaquery: "(min-width: 800px)"
+          type: "custom:button-card"
           template: "card_graph"
           card_mod:
             style: |
@@ -79,9 +84,11 @@ template_card_heating:
               }
           entity: "[[sensor_temperature]]"
           variables:
-            ulm_card_graph_color: "var(--google-red)"
-            ulm_card_graph_name: "Temperatur"
+            ulm_card_graph_name: "Temperatur & Öffnungsgrad"
             ulm_card_graph_entity: "[[sensor_temperature]]"
+            ulm_card_graph_color: "var(--google-red)"
+            ulm_card_graph_entity2: "[[sensor_ventil_offnunssgrad]]"
+            ulm_card_graph_color2: "var(--google-grey)"
             ulm_card_graph_hours: 24
             ulm_card_graph_group_by: "interval"
             # Open pop up on tap

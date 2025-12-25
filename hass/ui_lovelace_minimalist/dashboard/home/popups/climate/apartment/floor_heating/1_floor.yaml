@@ -38,7 +38,7 @@ card:
           "entrance"
           "dressing"
           "bathroom"
-          "livingroom"
+          "living_room"
           "kitchen"
           "wintergarden"
   # Cards for each underfloor heating entity

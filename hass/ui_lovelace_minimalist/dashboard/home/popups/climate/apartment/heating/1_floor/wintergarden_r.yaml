@@ -6,7 +6,8 @@ type: "custom:decluttering-card"
 # Use template defined in ../templates
 template: "template_card_heating"
 variables:
-  - entity_climate: "climate.hmip_etrv_wintergarten_r"
+  - entity_climate: "climate.hmip_th_wintergarten_r"
   - name_room: "Wintergarten R"
-  - sensor_battery: "binary_sensor.hmip_etrv_wintergarten_r_batterie"
-  - sensor_temperature: "sensor.hmip_etrv_wintergarten_r_temperatur"
+  - sensor_battery: "binary_sensor.hmip_th_wintergarten_r_batterie"
+  - sensor_temperature: "sensor.hmip_th_wintergarten_r_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_th_wintergarten_r_ventil_offnungsgrad"
