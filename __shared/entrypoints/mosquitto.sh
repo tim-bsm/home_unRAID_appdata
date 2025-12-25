@@ -10,8 +10,17 @@
 # Constants
 MOSQUITTO_PASSWORD_FILE=/mosquitto/config/passwd
 
-# Set user in password file
-echo $MOSQUITTO_CREDENTIALS > $MOSQUITTO_PASSWORD_FILE
+# Functions
+parse_env_to_file() {
+    # Convert comma-separated credentials to newline-separated format
+    echo "$MOSQUITTO_CREDENTIALS" | tr ',' '\n' > "$MOSQUITTO_PASSWORD_FILE"
+}
+
+# Set user in password file and update to hashed passwords
+parse_env_to_file
+mosquitto_passwd -U $MOSQUITTO_PASSWORD_FILE
+
+# Set permissions
 chmod 0700 $MOSQUITTO_PASSWORD_FILE
 chown mosquitto:mosquitto $MOSQUITTO_PASSWORD_FILE
 

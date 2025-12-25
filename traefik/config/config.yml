@@ -43,7 +43,9 @@ tcp:
       entryPoints:
         - mqtt
       rule: HostSNI(`mqtt.{{ env "TRAEFIK_HOST" }}`)      # Use the HostSNI rule to match the MQTT service
-      tls: true                                           # Enable TLS for this router
+      tls:
+        options: mintls12                                 # Use the TLS option defined in the tls section
+        # true                                           # Enable TLS for this router
       service: mosquitto
   services:
     # Add a service for the MQTT service
@@ -62,3 +64,6 @@ tls:
   options:
     default:
       minVersion: "VersionTLS13"                          # Minimum TLS Version
+
+    mintls12:
+      minVersion: "VersionTLS12"                          # Minimum TLS Version specific
