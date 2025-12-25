@@ -89,15 +89,9 @@ cards:
             icon: "mdi:newspaper-variant-multiple-outline"
             color: "indigo"
             pattern: "Papiertonne"
-  
-  # TODO: Show badge on update
-  # Show badge on update
-  # - type: "custom:state-switch"
-  #   entity: "mediaquery"
-  #   states:
-  #     "(min-width: 800px)":
-  #       type: "custom:button-card"
-  #       template: "chip_update"
-  #       entity: group.updates
-  #       variables:
-  #         ulm_chip_update_path: "/ui-lovelace-minimalist/system"
+          
+          - type: "others"
+            label: "Christbäume"
+            icon: "mdi:pine-tree"
+            color: "green"
+            pattern: "Christbäume"

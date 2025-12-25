@@ -33,7 +33,7 @@ cards:
     variables:
       - entity: "light.smart_christmas_light_cct"
       - name: "Lichterkette"
-      - icon: "mdi:led-strip-variant"
+      - icon: "mdi:string-lights"
   
   # Add power monitor
   - type: "custom:decluttering-card"
