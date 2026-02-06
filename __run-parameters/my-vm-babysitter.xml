@@ -27,12 +27,12 @@ Features:&#xD;
   <ExtraParams>--device /dev/fuse --cap-add SYS_ADMIN</ExtraParams>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1738405812</DateInstalled>
+  <DateInstalled>1768690849</DateInstalled>
   <DonateText/>
   <DonateLink/>
   <Requires>**Unraid VM Manager Enabled**</Requires>
   <Config Name="Time Zone" Target="TZ" Default="" Mode="{3}" Description="Set container to a desired timezone (usually same as this host)" Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="Autostart Domains" Target="VM_AUTOSTART_LIST" Default="" Mode="" Description="Space separated list of domains that will be started along with the container if found powered off (case sensitive)" Type="Variable" Display="always" Required="false" Mask="false">pfsense272 mld55 weinland</Config>
+  <Config Name="Autostart Domains" Target="VM_AUTOSTART_LIST" Default="" Mode="" Description="Space separated list of domains that will be started along with the container if found powered off (case sensitive)" Type="Variable" Display="always" Required="false" Mask="false">pfsense281 mld65a weinland</Config>
   <Config Name="Ignored Domains" Target="VM_IGNORED_LIST" Default="" Mode="{3}" Description="Space separated list of domains to exclude from backup schedule and automatic checks (case sensitive)" Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="Backups Rotation (local)" Target="MAX_BACKUPS_PER_CHAIN" Default="30" Mode="{3}" Description="Backups rotation: Number of checkpoints to save incrmentally into a backup chain before to archive it. If set to `0`, backup chain will grow indefinitely (and no retention policies will be applied)" Type="Variable" Display="always" Required="false" Mask="false">30</Config>
   <Config Name="Path for Backups (local)" Target="/backups" Default="/mnt/user/backups/domains" Mode="rw" Description="Path to user share where all backups will be stored" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/backups/domains</Config>
@@ -63,4 +63,5 @@ Features:&#xD;
   <Config Name="Lock Folder" Target="/run/lock" Default="/run/lock" Mode="rw" Description="Allow scripts to put locks onto the main host" Type="Path" Display="advanced" Required="true" Mask="false">/run/lock</Config>
   <Config Name="Path to Nvram Binaries" Target="/etc/libvirt/qemu/nvram" Default="/etc/libvirt/qemu/nvram" Mode="rw" Description="Allow scripts to read/restore per domain nvram binaries for EFI/UEFI boot" Type="Path" Display="advanced" Required="true" Mask="false">/etc/libvirt/qemu/nvram</Config>
   <Config Name="Path to OVMF Binaries" Target="/usr/share/qemu/ovmf-x64" Default="/usr/share/qemu/ovmf-x64" Mode="ro" Description="Allow scripts to read/copy common nvram binaries for EFI/UEFI boot" Type="Path" Display="advanced" Required="true" Mask="false">/usr/share/qemu/ovmf-x64</Config>
+  <TailscaleStateDir/>
 </Container>

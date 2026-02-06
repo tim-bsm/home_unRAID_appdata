@@ -17,7 +17,7 @@
   <ExtraParams>--env-file /mnt/user/appdata/__shared/env-files/hass.env --label-file /mnt/user/appdata/__shared/label-files/hass</ExtraParams>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1766510575</DateInstalled>
+  <DateInstalled>1766698811</DateInstalled>
   <DonateText/>
   <DonateLink/>
   <Requires/>

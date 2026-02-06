@@ -20,7 +20,7 @@ To further control mosquitto configuration, place a mosquitto.conf file in the c
   <ExtraParams>--expose 1883 --entrypoint /mosquitto.sh --env-file /mnt/user/appdata/__shared/env-files/mosquitto.env --label-file /mnt/user/appdata/__shared/label-files/mosquitto</ExtraParams>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1751031757</DateInstalled>
+  <DateInstalled>1766680632</DateInstalled>
   <DonateText/>
   <DonateLink/>
   <Requires/>

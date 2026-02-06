@@ -88,11 +88,11 @@ cameras:
       output_args:
         record: preset-record-generic-audio-copy  # record audio
       inputs:
-        - path: rtsp://127.0.1:8554/reolink2_main
+        - path: rtsp://127.0.0.1:8554/reolink2_main
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://127.0.1:8554/reolink2_sub
+        - path: rtsp://127.0.0.1:8554/reolink2_sub
           input_args: preset-rtsp-restream
           roles:
             - detect
