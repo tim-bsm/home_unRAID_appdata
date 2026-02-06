@@ -4,7 +4,7 @@
 # This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
 template_card_frigate:
   card:
-    type: custom:frigate-card
+    type: custom:advanced-camera-card
     cameras:
       - camera_entity: "camera.[[camera1]]"
         frigate:
@@ -29,7 +29,7 @@ template_card_frigate:
       aspect_ratio_mode: static
       aspect_ratio: "24:9"
     live:
-      # Don't show hambruger menu on the right
+      # Don't show hamburger menu on the right
       controls:
         thumbnails:
           mode: none
@@ -52,10 +52,10 @@ template_card_frigate:
         - hidden # "
     view:
       actions:
-        # Fullscreen on douple tap
+        # Fullscreen on double tap
         double_tap_action:
-          action: custom:frigate-card-action
-          frigate_card_action: fullscreen
+          action: custom:advanced-camera-card-action
+          advanced_camera_card_action: fullscreen
     menu:
       buttons:
         cameras:

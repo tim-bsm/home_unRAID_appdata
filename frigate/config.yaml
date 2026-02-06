@@ -50,13 +50,13 @@ go2rtc:
       - rtsp://{FRIGATE_REOLINK1_USER}:{FRIGATE_REOLINK1_PASSWORD}@{FRIGATE_REOLINK1_IP}/Preview_01_sub
       - ffmpeg:reolink1_sub#input=rtsp/udp#audio=copy#audio=opus#hardware
       # - ffmpeg:reolink1_sub#video=copy#audio=copy#audio=opus#hardware
-    reolink2_main:
-      - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_main
-      # https://github.com/blakeblackshear/frigate/issues/9159#issuecomment-1881147182
-      - ffmpeg:reolink2_main#input=rtsp/udp#hardware
-    reolink2_sub:
-      - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_sub
-      - ffmpeg:reolink2_sub#input=rtsp/udp#audio=copy#audio=opus#hardware
+    # reolink2_main:
+    #   - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_main
+    #   # https://github.com/blakeblackshear/frigate/issues/9159#issuecomment-1881147182
+    #   - ffmpeg:reolink2_main#input=rtsp/udp#hardware
+    # reolink2_sub:
+    #   - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_sub
+    #   - ffmpeg:reolink2_sub#input=rtsp/udp#audio=copy#audio=opus#hardware
 
 cameras:
   reolink1:
@@ -82,28 +82,28 @@ cameras:
     motion:
       mask: 0.384,0.015,0.6,0.015,0.601,0.071,0.386,0.068
 
-  reolink2:
-    enabled: true
-    ffmpeg:
-      output_args:
-        record: preset-record-generic-audio-copy  # record audio
-      inputs:
-        - path: rtsp://127.0.0.1:8554/reolink2_main
-          input_args: preset-rtsp-restream
-          roles:
-            - record
-        - path: rtsp://127.0.0.1:8554/reolink2_sub
-          input_args: preset-rtsp-restream
-          roles:
-            - detect
-    detect:
-      enabled: true
-      fps: 5
-    live:
-      streams:
-        reolink2_sub: reolink2_sub
-    motion:
-      mask: 0.389,0.015,0.599,0.015,0.599,0.064,0.39,0.066
+  # reolink2:
+  #   enabled: true
+  #   ffmpeg:
+  #     output_args:
+  #       record: preset-record-generic-audio-copy  # record audio
+  #     inputs:
+  #       - path: rtsp://127.0.0.1:8554/reolink2_main
+  #         input_args: preset-rtsp-restream
+  #         roles:
+  #           - record
+  #       - path: rtsp://127.0.0.1:8554/reolink2_sub
+  #         input_args: preset-rtsp-restream
+  #         roles:
+  #           - detect
+  #   detect:
+  #     enabled: true
+  #     fps: 5
+  #   live:
+  #     streams:
+  #       reolink2_sub: reolink2_sub
+  #   motion:
+  #     mask: 0.389,0.015,0.599,0.015,0.599,0.064,0.39,0.066
 version: 0.16-0
 detect:
   enabled: true
