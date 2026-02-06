@@ -34,12 +34,8 @@ cards:
   # Only show this tab for the tfb and admin roles
   - type: "custom:state-switch"
     entity: "user"
-    default: "default"
     states:
       # Show nothing as default
-      default:
-        type: "custom:button-card"
-        color_type: "blank-card"
       tfb:
         type: "custom:decluttering-card"
         # Use template defined in ../templates
