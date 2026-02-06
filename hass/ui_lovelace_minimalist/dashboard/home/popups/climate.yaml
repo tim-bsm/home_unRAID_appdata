@@ -45,6 +45,9 @@ cards:
       Apartment_Heating:
         !include "climate/apartment/heating.yaml"
       
+      # Show the climate cards for Below_Floor_Heating
+      Below_Floor_Heating:
+        !include "climate/below/floor_heating.yaml"
       # Show the climate cards for Below_Heating
       Below_Heating:
         !include "climate/below/heating.yaml"

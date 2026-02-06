@@ -21,39 +21,24 @@ card:
   layout_type: "grid"
   layout:
     # Define the amount of columns
-    grid-template-columns: "repeat(4, 1fr)"
+    grid-template-columns: "repeat(2, 1fr)"
     grid-template-rows: "min-content"
     grid-gap: "calc(0.7em + 5px)" # 5px to compensate removed space for nesting grids
     # Use grid-template-areas to define the layout
     grid-template-areas: |
-      "toilet   kitchen_35top   bathroom    dressing"
-      "tim      dining_room     kitchen     wiga_r"
-      "wiga_l   living_room . ."
+      "hallway      bathroom"
+      "living_room ."
     mediaquery:
       # Mobile
       "(max-width: 800px)":
         grid-template-columns: "100%"
         grid-template-rows: "min-content"
         grid-template-areas: |
-          "toilet"
-          "kitchen_35top"
+          "hallway"
           "bathroom"
-          "dressing"
-          "tim"
-          "dining_room"
-          "kitchen"
-          "wiga_r"
-          "wiga_l"
           "living_room"
   # Cards for each underfloor heating entity
   cards:
-    - !include "1_floor/toilet.yaml"
-    - !include "1_floor/kitchen_35top.yaml"
-    - !include "1_floor/bathroom.yaml"
-    - !include "1_floor/dressing.yaml"
-    - !include "1_floor/tim.yaml"
-    - !include "1_floor/dining_room.yaml"
-    - !include "1_floor/kitchen.yaml"
-    - !include "1_floor/wiga_r.yaml"
-    - !include "1_floor/wiga_l.yaml"
-    - !include "1_floor/living_room.yaml"
+    - !include "0_floor/hallway.yaml"
+    - !include "0_floor/bathroom.yaml"
+    - !include "0_floor/living_room.yaml"

@@ -5,8 +5,8 @@ cards:
   # Add separator for 1. floor
   - type: "custom:bubble-card"
     card_type: "separator"
-    name: "1. Floor Heating"
-    icon: "mdi:stairs"
+    name: "Rented — Heating"
+    icon: "mdi:home-floor-1"
 
   # Add heating cards
   - !include "heating/1_floor.yaml"
@@ -14,8 +14,8 @@ cards:
   # Add separator for 0. floor
   - type: "custom:bubble-card"
     card_type: "separator"
-    name: "0. Floor Heating"
-    icon: "mdi:garage"
+    name: "Rented — Heating"
+    icon: "mdi:home-floor-0"
   
   # Add heating cards
   - !include "heating/0_floor.yaml"

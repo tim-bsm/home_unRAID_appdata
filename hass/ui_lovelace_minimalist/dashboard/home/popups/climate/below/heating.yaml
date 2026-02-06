@@ -2,5 +2,11 @@
 
 type: "vertical-stack"
 cards:
+  # Add separator for 0. floor
+  - type: "custom:bubble-card"
+    card_type: "separator"
+    name: "Below — Heating"
+    icon: "mdi:home-floor-0"
+
   # Add heating cards
   - !include "heating/0_floor.yaml"

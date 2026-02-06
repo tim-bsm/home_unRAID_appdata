@@ -6,7 +6,7 @@ which_climate:
   options:
     - "Apartment_Floor_Heating"
     - "Apartment_Heating"
-    # - "Below_Floor_Heating"
+    - "Below_Floor_Heating"
     - "Below_Heating"
     # - "Rented_Floor_Heating"
     - "Rented_Heating"

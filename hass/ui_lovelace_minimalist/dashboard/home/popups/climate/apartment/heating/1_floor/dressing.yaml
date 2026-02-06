@@ -1,0 +1,13 @@
+---
+
+view_layout:
+  grid-area: "dressing"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_heating"
+variables:
+  - entity_climate: "climate.hmip_th_ankleide"
+  - name_room: "Ankleide"
+  - sensor_battery: "binary_sensor.hmip_th_ankleide_batterie"
+  - sensor_temperature: "sensor.hmip_th_ankleide_temperatur"
+  - sensor_ventil_offnunssgrad: "sensor.hmip_th_ankleide_ventil_offnungsgrad"
