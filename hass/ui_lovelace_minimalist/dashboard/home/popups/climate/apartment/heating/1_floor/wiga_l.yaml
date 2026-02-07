@@ -10,4 +10,4 @@ variables:
   - name_room: "Wintergarten L"
   - sensor_battery: "binary_sensor.hmip_th_wiga_l_batterie"
   - sensor_temperature: "sensor.hmip_th_wiga_l_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_th_wiga_l_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_th_wiga_l_ventil_offnungsgrad"

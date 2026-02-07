@@ -10,4 +10,4 @@ variables:
   - name_room: "Flur"
   - sensor_battery: "binary_sensor.hmip_yfe35_th_og_flur_batterie"
   - sensor_temperature: "sensor.hmip_yfe35_th_og_flur_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_yfe35_th_og_flur_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_yfe35_th_og_flur_ventil_offnungsgrad"

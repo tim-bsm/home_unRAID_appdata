@@ -10,4 +10,4 @@ variables:
   - name_room: "Barakatullah"
   - sensor_battery: "binary_sensor.hmip_yfe35_th_eg_strasse_links_batterie"
   - sensor_temperature: "sensor.hmip_yfe35_th_eg_strasse_links_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_yfe35_th_eg_strasse_links_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_yfe35_th_eg_strasse_links_ventil_offnungsgrad"

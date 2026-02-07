@@ -10,4 +10,4 @@ variables:
   - name_room: "Gästezimmer"
   - sensor_battery: "binary_sensor.hmip_xi_th_gaestezimmer_batterie"
   - sensor_temperature: "sensor.hmip_xi_th_gaestezimmer_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_xi_th_gaestezimmer_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_xi_th_gaestezimmer_ventil_offnungsgrad"

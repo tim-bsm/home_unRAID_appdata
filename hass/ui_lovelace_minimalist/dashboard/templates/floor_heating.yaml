@@ -77,42 +77,22 @@ template_card_floor_heating:
           type: "horizontal-stack"      
           cards:
             # Show temperature in graph
-            - type: "custom:button-card"
-              template: "card_graph"
-              card_mod:
-                style: |
-                  :host ha-card {
-                    --card-mod-icon-color: var(--google-red);
-                  }
-              entity: "[[sensor_temperature]]"
+            - type: "custom:decluttering-card"
+              # Use template defined in same directory
+              template: "template_card_graph_1ent"
               variables:
-                ulm_card_graph_color: "var(--google-red)"
-                ulm_card_graph_name: "Temperatur"
-                ulm_card_graph_entity: "[[sensor_temperature]]"
-                ulm_card_graph_hours: 24
-                ulm_card_graph_group_by: "interval"
-                # Open pop up on tap
-                ulm_card_tap_action: "more-info"
-                ulm_icon_tap_action: "more-info"
-                ulm_name_tap_action: "more-info"
+                - name: "Temperatur"
+                - sensor: "[[sensor_temperature]]"
+                - color: "red"
+                - hours: 24
             
             # Show humidity in graph
-            - type: "custom:button-card"
-              template: "card_graph"
-              card_mod:
-                style: |
-                  :host ha-card {
-                    --card-mod-icon-color: var(--google-blue);
-                  }
-              entity: "[[sensor_humidity]]"
+            - type: "custom:decluttering-card"
+              # Use template defined in same directory
+              template: "template_card_graph_1ent"
               variables:
-                ulm_card_graph_color: "var(--google-blue)"
-                ulm_card_graph_name: "Luftfeuchtigkeit"
-                ulm_card_graph_entity: "[[sensor_humidity]]"
-                ulm_card_graph_hours: 24
-                ulm_card_graph_group_by: "interval"
-                # Open pop up on tap
-                ulm_card_tap_action: "more-info"
-                ulm_icon_tap_action: "more-info"
-                ulm_name_tap_action: "more-info"
+                - name: "Luftfeuchtigkeit"
+                - sensor: "[[sensor_humidity]]"
+                - color: "blue"
+                - hours: 24
         

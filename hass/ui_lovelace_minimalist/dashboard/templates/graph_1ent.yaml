@@ -1,0 +1,24 @@
+---
+
+# Define a template for a card that controls multiple camera entities with two-way-audio.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_graph_1ent: # Graph with 1 entity
+  card:
+    type: "custom:button-card"
+    template: "card_graph"
+    card_mod:
+      style: |
+        :host ha-card {
+          --card-mod-icon-color: var(--google-[[color]]);
+        }
+    entity: "[[sensor]]"
+    variables:
+      ulm_card_graph_name: "[[name]]"
+      ulm_card_graph_entity: "[[sensor]]"
+      ulm_card_graph_color: "var(--google-[[color]])"
+      ulm_card_graph_hours: "[[hours]]"
+      ulm_card_graph_group_by: "interval"
+      # Open pop up on tap
+      ulm_card_tap_action: "more-info"
+      ulm_icon_tap_action: "more-info"
+      ulm_name_tap_action: "more-info"

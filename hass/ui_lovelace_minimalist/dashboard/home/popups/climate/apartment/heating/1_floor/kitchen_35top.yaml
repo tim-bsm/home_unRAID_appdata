@@ -10,4 +10,4 @@ variables:
   - name_room: "Küche 35"
   - sensor_battery: "binary_sensor.hmip_th_kueche_35oben_batterie"
   - sensor_temperature: "sensor.hmip_th_kueche_35oben_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_th_kueche_35oben_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_th_kueche_35oben_ventil_offnungsgrad"

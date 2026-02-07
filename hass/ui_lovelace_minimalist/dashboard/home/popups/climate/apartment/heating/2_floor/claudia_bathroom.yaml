@@ -10,4 +10,4 @@ variables:
   - name_room: "Claudia Badwand"
   - sensor_battery: "binary_sensor.hmip_th_claudia_bad_batterie"
   - sensor_temperature: "sensor.hmip_th_claudia_bad_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_th_claudia_bad_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_th_claudia_bad_ventil_offnungsgrad"

@@ -10,4 +10,4 @@ variables:
   - name_room: "Büro"
   - sensor_battery: "binary_sensor.hmip_th_buero_batterie"
   - sensor_temperature: "sensor.hmip_th_buero_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_th_buero_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_th_buero_ventil_offnungsgrad"

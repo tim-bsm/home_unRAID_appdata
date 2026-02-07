@@ -68,30 +68,19 @@ template_card_heating:
             # Battery info
             ulm_battery_entity: "[[sensor_battery]]"
         
-        # Add graph cards
         # Show temperature in graph
         - view_layout:
             grid-area: "graph"
             show:
               # Only show when screen-width is larger than 800px
               mediaquery: "(min-width: 800px)"
-          type: "custom:button-card"
-          template: "card_graph"
-          card_mod:
-            style: |
-              :host ha-card {
-                --card-mod-icon-color: var(--google-red);
-              }
-          entity: "[[sensor_temperature]]"
+          type: "custom:decluttering-card"
+          # Use template defined in same directory
+          template: "template_card_graph_2ent"
           variables:
-            ulm_card_graph_name: "Temperatur & Öffnungsgrad"
-            ulm_card_graph_entity: "[[sensor_temperature]]"
-            ulm_card_graph_color: "var(--google-red)"
-            ulm_card_graph_entity2: "[[sensor_ventil_offnunssgrad]]"
-            ulm_card_graph_color2: "var(--google-grey)"
-            ulm_card_graph_hours: 24
-            ulm_card_graph_group_by: "interval"
-            # Open pop up on tap
-            ulm_card_tap_action: "more-info"
-            ulm_icon_tap_action: "more-info"
-            ulm_name_tap_action: "more-info"
+            - name: "Temperatur & Öffnungsgrad"
+            - sensor: "[[sensor_temperature]]"
+            - color: "red"
+            - sensor2: "[[sensor_ventil_offnungsgrad]]"
+            - color2: "grey"
+            - hours: 24

@@ -10,4 +10,4 @@ variables:
   - name_room: "Ankleide"
   - sensor_battery: "binary_sensor.hmip_th_ankleide_batterie"
   - sensor_temperature: "sensor.hmip_th_ankleide_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_th_ankleide_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_th_ankleide_ventil_offnungsgrad"

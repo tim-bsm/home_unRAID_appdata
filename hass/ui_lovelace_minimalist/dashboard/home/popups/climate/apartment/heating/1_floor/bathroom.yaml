@@ -10,4 +10,4 @@ variables:
   - name_room: "Bad"
   - sensor_battery: "binary_sensor.hmip_th_bad_batterie"
   - sensor_temperature: "sensor.hmip_th_bad_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_th_bad_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_th_bad_ventil_offnungsgrad"

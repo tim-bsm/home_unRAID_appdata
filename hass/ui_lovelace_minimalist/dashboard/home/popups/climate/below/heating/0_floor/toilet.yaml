@@ -10,4 +10,4 @@ variables:
   - name_room: "WC"
   - sensor_battery: "binary_sensor.hmip_xi_th_wc_batterie"
   - sensor_temperature: "sensor.hmip_xi_th_wc_temperatur"
-  - sensor_ventil_offnunssgrad: "sensor.hmip_xi_th_wc_ventil_offnungsgrad"
+  - sensor_ventil_offnungsgrad: "sensor.hmip_xi_th_wc_ventil_offnungsgrad"
