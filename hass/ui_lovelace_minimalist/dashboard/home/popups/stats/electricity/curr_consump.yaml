@@ -1,0 +1,11 @@
+---
+
+view_layout:
+  grid-area: "curr_consump"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_power"
+variables:
+  - sensor: "sensor.stromleser_ehz_power"
+  - name: "Stromverbrauch"
+  - hours: 24

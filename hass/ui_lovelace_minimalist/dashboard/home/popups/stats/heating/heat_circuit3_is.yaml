@@ -1,0 +1,12 @@
+---
+
+view_layout:
+  grid-area: "heat_circuit3_is"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_graph"
+variables:
+  - name: "Heizkreis 3VL Ist-Temperatur"
+  - sensor: "sensor.pellematic_heating_circuit_3_flow_temperature"
+  - color: "red"
+  - hours: 24

@@ -13,9 +13,10 @@ template_card_power:
       ulm_card_power_details_hours: "[[hours]]"
       ulm_card_power_details_24hour: true
       ulm_card_power_details_thresholds:
-        - value: 0
-          color: "#43A047"
         - value: 2500
+          color: "#43A047"
+        - value: 5500
           color: "#FFA600"
-        - value: 3000
+        - value: 9000
           color: "#DB4437"
+      ulm_card_power_details_height: "100"

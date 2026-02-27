@@ -76,9 +76,9 @@ template_card_heating:
               mediaquery: "(min-width: 800px)"
           type: "custom:decluttering-card"
           # Use template defined in same directory
-          template: "template_card_graph_2ent"
+          template: "template_card_graph"
           variables:
-            - name: "Temperatur & Öffnungsgrad"
+            - name: "Temperatur"
             - sensor: "[[sensor_temperature]]"
             - color: "red"
             - sensor2: "[[sensor_ventil_offnungsgrad]]"

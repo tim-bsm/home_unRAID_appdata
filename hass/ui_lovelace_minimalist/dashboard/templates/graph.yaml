@@ -1,8 +1,11 @@
 ---
 
-# Define a template for a card that controls multiple camera entities with two-way-audio.
+# Define a template for a card that shows a graph for one or two entities.
 # This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
-template_card_graph_1ent: # Graph with 1 entity
+template_card_graph:
+  default:
+    - sensor2: ""
+    - color2: ""
   card:
     type: "custom:button-card"
     template: "card_graph"
@@ -13,9 +16,11 @@ template_card_graph_1ent: # Graph with 1 entity
         }
     entity: "[[sensor]]"
     variables:
-      ulm_card_graph_name: "[[name]]"
+      ulm_card_graph_name: "[[name]] [[[hours]]h]"
       ulm_card_graph_entity: "[[sensor]]"
       ulm_card_graph_color: "var(--google-[[color]])"
+      ulm_card_graph_entity2: "[[sensor2]]"
+      ulm_card_graph_color2: "var(--google-[[color2]])"
       ulm_card_graph_hours: "[[hours]]"
       ulm_card_graph_group_by: "interval"
       # Open pop up on tap

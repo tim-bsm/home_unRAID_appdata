@@ -34,12 +34,21 @@ cards:
       - entity: "light.smart_christmas_light_cct"
       - name: "Lichterkette"
       - icon: "mdi:string-lights"
-  
-  # Add power monitor
+
+  # Add living room light
   - type: "custom:decluttering-card"
     # Use template defined in ../templates
-    template: "template_card_power"
+    template: "template_card_bubble_light"
     variables:
-      - sensor: "sensor.stromleser_ehz_e_in"
-      - name: "Stromverbrauch"
-      - hours: 24
+      - entity: "switch.steckdose_1"
+      - name: "Stehlampe"
+      - icon: "mdi:floor-lamp-torchiere-outline"
+  
+  # Add homepod switch
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_bubble_light"
+    variables:
+      - entity: "switch.shellyplugsg3_8cbfeaa0de50"
+      - name: "HomePod An/Aus"
+      - icon: "mdi:cast-audio-variant"

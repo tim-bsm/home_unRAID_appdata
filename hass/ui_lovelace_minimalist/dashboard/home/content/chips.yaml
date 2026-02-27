@@ -33,6 +33,14 @@ cards:
     variables:
       ulm_chip_navigate_path: "#network"
       ulm_chip_navigate_icon: "mdi:lan"
+  
+  # Stats hyperlink to popup
+  - type: "custom:button-card"
+    template: "chip_navigate"
+    label: "Stats"
+    variables:
+      ulm_chip_navigate_path: "#stats"
+      ulm_chip_navigate_icon: "mdi:chart-arc"
 
 
   # Center navigation on mobile
@@ -47,6 +55,40 @@ cards:
   ###
   # Other chips
   ###
+
+  # Show update chip if updates are available
+  - type: "custom:state-switch"
+    entity: "mediaquery"
+    states:
+      # Don't show on mobile
+      "(min-width: 800px)":
+        type: "custom:state-switch"
+        entity: "template"
+        template: "{% if states('counter.updates_available') | float(0) > 0 %} updates_available {% endif %}"
+        states:
+          # Show nothing as default
+          updates_available:
+            # type: "custom:mod-card"
+            # card_mod:
+            #   style:
+            #     layout-card$:
+            #       grid-layout$: |
+            #         :host {
+            #           padding: 0rem !important;
+            #         }
+            #         #root {
+            #           margin: 0rem !important;
+            #         }
+            #         #root > * {
+            #           margin: 0.1rem !important;
+            #         }
+            # card:
+            type: "custom:button-card"
+            template: "chip_navigate"
+            label: ""
+            variables:
+              ulm_chip_navigate_path: "#"
+              ulm_chip_navigate_icon: "mdi:update"
 
   # Show waste only on desktop
   - type: "custom:state-switch"

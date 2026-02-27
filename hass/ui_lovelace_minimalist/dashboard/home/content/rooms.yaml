@@ -29,4 +29,13 @@ cards:
       ulm_card_navigate_title: "Dad"
       ulm_card_navigate_icon: "mdi:pac-man"
       ulm_card_navigate_color: "var(--color-yellow)"
+
+  # Top
+  - type: "custom:button-card"
+    template: "card_navigate"
+    variables:
+      ulm_card_navigate_path: "#top"
+      ulm_card_navigate_title: "Oben"
+      ulm_card_navigate_icon: "mdi:stairs-up"
+      ulm_card_navigate_color: "var(--color-purple)"
   

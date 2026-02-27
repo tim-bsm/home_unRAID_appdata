@@ -1,0 +1,6 @@
+---
+
+# Counter to track available updates
+updates_available:
+  initial: 0
+  step: 1

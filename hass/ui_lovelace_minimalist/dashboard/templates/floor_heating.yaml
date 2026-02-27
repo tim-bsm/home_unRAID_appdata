@@ -79,7 +79,7 @@ template_card_floor_heating:
             # Show temperature in graph
             - type: "custom:decluttering-card"
               # Use template defined in same directory
-              template: "template_card_graph_1ent"
+              template: "template_card_graph"
               variables:
                 - name: "Temperatur"
                 - sensor: "[[sensor_temperature]]"
@@ -89,7 +89,7 @@ template_card_floor_heating:
             # Show humidity in graph
             - type: "custom:decluttering-card"
               # Use template defined in same directory
-              template: "template_card_graph_1ent"
+              template: "template_card_graph"
               variables:
                 - name: "Luftfeuchtigkeit"
                 - sensor: "[[sensor_humidity]]"

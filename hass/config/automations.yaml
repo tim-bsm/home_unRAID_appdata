@@ -1,33 +1,175 @@
 ---
 
-- alias: Set default theme
-  description: ''
+- alias: "Set default theme"
+  description: ""
   triggers:
-  - trigger: homeassistant
-    event: start
+  - trigger: "homeassistant"
+    event: "start"
   conditions: []
   actions:
-  - action: frontend.set_theme
+  - action: "frontend.set_theme"
     metadata: {}
     data:
-      mode: dark
-      name: main
-  mode: single
+      mode: "dark"
+      name: "main"
+  mode: "single"
 
 - alias: "Activate scene arbeiten on scene computer an"
   description: ""
   trigger:
-    - platform: event
-      event_type: call_service
+    - platform: "event"
+      event_type: "call_service"
       event_data:
-        domain: scene
-        service: turn_on
+        domain: "scene"
+        service: "turn_on"
         service_data:
-          entity_id: scene.computer
+          entity_id: "scene.computer"
   condition: []
   action:
-    - service: script.turn_on
+    - service: "script.turn_on"
       data: {}
       target:
-        entity_id: script.activate_scene_arbeiten
-  mode: restart
+        entity_id: "script.activate_scene_arbeiten"
+  mode: "restart"
+
+- alias: "Increment counter on available updates"
+  description: ""
+  trigger:
+    - platform: "event"
+      event_type: "state_changed"
+      event_data:
+        domain: "update"
+  condition:
+    condition: "template"
+    value_template: >
+      "{{ trigger.event.data.entity_id.startswith('update.')
+      and trigger.event.data.old_state.state == 'off'
+      and trigger.event.data.new_state.state == 'on' }}"
+  actions:
+    - action: "counter.increment"
+      target:
+        entity_id: "counter.updates_available"
+
+- alias: "Decrement counter on completed updates"
+  description: ""
+  trigger:
+    - platform: "event"
+      event_type: "state_changed"
+      event_data:
+        domain: "update"
+  condition:
+    condition: "template"
+    value_template: >
+      "{{ trigger.event.data.entity_id.startswith('update.')
+      and trigger.event.data.old_state.state == 'on'
+      and trigger.event.data.new_state.state == 'off' }}"
+  actions:
+    - action: "counter.decrement"
+      target:
+        entity_id: "counter.updates_available"
+
+- id: '1770927144629'
+  alias: Wendeltreppe an
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - event.bilresa_dual_button_taste_1
+    attribute: event_type
+    to:
+    - multi_press_1
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.steckdose_2
+    data: {}
+  mode: single
+
+- id: '1770927316149'
+  alias: Wendeltreppe aus
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - event.bilresa_dual_button_taste_2
+    attribute: event_type
+    from:
+    - long_release
+    to:
+    - multi_press_1
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id: switch.steckdose_2
+    data: {}
+  mode: single
+
+- id: '1770928210537'
+  alias: Test an
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - event.bilresa_dual_button_taste_1
+    attribute: event_type
+    from:
+    - long_release
+    to:
+    - multi_press_1
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.shellyplugsg3_8cbfeaa0de50
+    data: {}
+  mode: single
+
+- id: '1770931013807'
+  alias: Wendeltreppe
+  description: ''
+  use_blueprint:
+    path: censay/ikea-bilresa-e2489-matter-smart-button.yaml
+    input:
+      target_device: 59921624cc4d6e91954a2b6d5347e50c
+      button1_event: event.bilresa_dual_button_taste_1
+      button2_event: event.bilresa_dual_button_taste_2
+      button1_single:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      button2_single:
+      - action: switch.turn_off
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+
+- id: '1771002623483'
+  alias: Wendeltreppe Bewegung
+  description: ''
+  use_blueprint:
+    path: aledziko/ikea-myggspray-e2494-matter-motion-sensor.yaml
+    input:
+      motion_entity: binary_sensor.myggspray_wrlss_mtn_sensor_belegung
+      use_time_window: true
+      active_start_time: '18:00:00'
+      active_end_time: 06:00:00
+      motion_on_action:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      motion_off_action:
+      - action: switch.turn_off
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+

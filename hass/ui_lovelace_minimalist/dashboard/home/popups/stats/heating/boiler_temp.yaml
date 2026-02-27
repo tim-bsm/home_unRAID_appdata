@@ -1,0 +1,12 @@
+---
+
+view_layout:
+  grid-area: "boiler_temp"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_graph"
+variables:
+  - name: "Kesseltemperatur"
+  - sensor: "sensor.pellematic_heater_1_temperature"
+  - color: "red"
+  - hours: 24

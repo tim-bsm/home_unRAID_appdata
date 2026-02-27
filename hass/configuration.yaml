@@ -10,8 +10,9 @@ frontend:
     #- "/hacsfiles/lovelace-card-mod/card-mod.js"
 
 # Include other configs
-automation: !include "config/automations.yaml"
+automation: !include "automations.yaml"
 binary_sensor: !include "config/binary_sensors.yaml"
+counter: !include "config/counters.yaml"
 homekit: !include "config/homekit.yaml"
 input_select: !include "config/input_selects.yaml"
 input_text: !include "config/input_texts.yaml"

@@ -1,0 +1,15 @@
+---
+
+view_layout:
+  grid-area: "rain"
+  show:
+    # Only show when screen-width is larger than 800px
+    mediaquery: "(min-width: 800px)"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_graph"
+variables:
+  - name: "Regen"
+  - sensor: "sensor.rainman_niederschlagsmenge"
+  - color: "blue"
+  - hours: 24

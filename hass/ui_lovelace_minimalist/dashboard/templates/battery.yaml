@@ -1,0 +1,19 @@
+---
+
+# Define a template for a bubble card that shows battery level.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+# https://ui-lovelace-minimalist.github.io/UI/usage/cards/card_battery
+template_card_battery:
+  default:
+    - attribute: ""
+    - sensor_battery_state: ""
+  card:
+    type: "custom:button-card"
+    template: "card_battery"
+    entity: "[[sensor]]"
+    variables:
+      ulm_card_battery_name: "[[name]]"
+      ulm_card_battery_attribute: "[[attribute]]"
+      ulm_card_battery_battery_state_entity_id: "[[sensor_battery_state]]"
+      ulm_card_battery_battery_level_warning: 30
+      ulm_card_battery_battery_level_danger: 15

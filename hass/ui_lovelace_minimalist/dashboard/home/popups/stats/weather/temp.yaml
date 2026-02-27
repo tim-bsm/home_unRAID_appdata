@@ -1,0 +1,12 @@
+---
+
+view_layout:
+  grid-area: "temp"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_graph"
+variables:
+  - name: "Temperatur"
+  - sensor: "sensor.windy_temperatur"
+  - color: "red"
+  - hours: 24

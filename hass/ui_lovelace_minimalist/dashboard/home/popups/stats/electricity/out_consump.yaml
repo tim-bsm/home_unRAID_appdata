@@ -1,0 +1,14 @@
+---
+
+view_layout:
+  grid-area: "out_consump"
+  show:
+    # Only show when screen-width is larger than 800px
+    mediaquery: "(min-width: 800px)"
+type: "custom:decluttering-card"
+# Use template defined in ../templates
+template: "template_card_power"
+variables:
+  - sensor: "sensor.stromleser_ehz_e_out"
+  - name: "Zähler -"
+  - hours: 24

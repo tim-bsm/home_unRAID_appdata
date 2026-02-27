@@ -1,0 +1,56 @@
+---
+
+# Show network specific settings and infos in pop-up
+view_layout:
+  grid-area: "popup"
+type: "vertical-stack"
+cards:
+  - type: "custom:bubble-card"
+    card_type: "pop-up"
+    hash: "#stats"
+    name: "Stats"
+    icon: "mdi:chart-arc"
+    width_desktop: "80%"
+    shadow_opacity: 70
+    # Make bubble card look similar to minimalist
+    styles: |
+      .bubble-button-card-container {
+        background: var(--card-background-color) !important;
+      }
+      .bubble-icon {
+        opacity: 1 !important;
+      }
+      .bubble-close-button{
+        background: var(--card-background-color) !important;
+      }
+  
+  - type: "vertical-stack"
+    cards:
+      # Add separator for weather
+      - type: "custom:bubble-card"
+        card_type: "separator"
+        name: "Weather"
+        icon: "mdi:weather-partly-cloudy"
+
+      # Add weather cards
+      - !include "stats/weather.yaml"
+
+
+      # Add separator for electricity
+      - type: "custom:bubble-card"
+        card_type: "separator"
+        name: "Electricity"
+        icon: "mdi:lightning-bolt-outline"
+
+      # Add electricity cards
+      - !include "stats/electricity.yaml"
+
+  
+      # Add separator for electricity
+      - type: "custom:bubble-card"
+        card_type: "separator"
+        name: "Heating"
+        icon: "mdi:fire"
+
+      # Add heating cards
+      - !include "stats/heating.yaml"

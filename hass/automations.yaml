@@ -1,0 +1,202 @@
+---
+
+- alias: Set default theme
+  description: ''
+  triggers:
+  - trigger: homeassistant
+    event: start
+  conditions: []
+  actions:
+  - action: frontend.set_theme
+    metadata: {}
+    data:
+      mode: dark
+      name: main
+  mode: single
+  id: 55cd2163258f48ce8de69271ec662950
+- alias: Activate scene arbeiten on scene computer an
+  description: ''
+  trigger:
+  - platform: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.computer
+  condition: []
+  action:
+  - service: script.turn_on
+    data: {}
+    target:
+      entity_id: script.activate_scene_arbeiten
+  mode: restart
+  id: 0c3bf11bbb924d48b77f448e3b2ef940
+- alias: Increment counter on available updates
+  description: ''
+  trigger:
+  - platform: event
+    event_type: state_changed
+    event_data:
+      domain: update
+  condition:
+    condition: template
+    value_template: '"{{ trigger.event.data.entity_id.startswith(''update.'') and
+      trigger.event.data.old_state.state == ''off'' and trigger.event.data.new_state.state
+      == ''on'' }}"
+
+      '
+  actions:
+  - action: counter.increment
+    target:
+      entity_id: counter.updates_available
+  id: 9b0947b408e14c76b870be64e8e3b452
+- alias: Decrement counter on completed updates
+  description: ''
+  trigger:
+  - platform: event
+    event_type: state_changed
+    event_data:
+      domain: update
+  condition:
+    condition: template
+    value_template: '"{{ trigger.event.data.entity_id.startswith(''update.'') and
+      trigger.event.data.old_state.state == ''on'' and trigger.event.data.new_state.state
+      == ''off'' }}"
+
+      '
+  actions:
+  - action: counter.decrement
+    target:
+      entity_id: counter.updates_available
+  id: 5fa89a73b47849b3bd1ec9743e96ff92
+- id: '1770931013807'
+  alias: Wendeltreppe
+  description: ''
+  use_blueprint:
+    path: censay/ikea-bilresa-e2489-matter-smart-button.yaml
+    input:
+      target_device: 59921624cc4d6e91954a2b6d5347e50c
+      button1_event: event.bilresa_dual_button_taste_1
+      button2_event: event.bilresa_dual_button_taste_2
+      button1_single:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      button2_single:
+      - action: switch.turn_off
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+- id: '1771002623483'
+  alias: Wendeltreppe Bewegung
+  description: ''
+  use_blueprint:
+    path: aledziko/ikea-myggspray-e2494-matter-motion-sensor.yaml
+    input:
+      motion_entity: binary_sensor.myggspray_wrlss_mtn_sensor_belegung
+      use_time_window: true
+      active_start_time: 00:00:01
+      active_end_time: 06:00:00
+      motion_on_action:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      motion_off_action:
+      - action: switch.turn_off
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      illuminance_entity: sensor.myggspray_wrlss_mtn_sensor_beleuchtungsstarke
+      motion_cutoff: 10
+- id: '1771064103877'
+  alias: Wendeltreppe Bewegung 1
+  description: ''
+  use_blueprint:
+    path: aledziko/ikea-myggspray-e2494-matter-motion-sensor.yaml
+    input:
+      motion_entity: binary_sensor.myggspray_wrlss_mtn_sensor_belegung
+      use_time_window: true
+      active_start_time: '17:30:00'
+      active_end_time: '23:59:59'
+      motion_on_action:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      motion_off_action:
+      - action: switch.turn_off
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      no_motion_wait: 900
+      illuminance_entity: sensor.myggspray_wrlss_mtn_sensor_beleuchtungsstarke
+      motion_cutoff: 10
+- id: '1771064312499'
+  alias: Wendeltreppe aus
+  description: ''
+  triggers:
+  - trigger: time
+    at: 00:00:00
+  conditions:
+  - condition: device
+    type: is_on
+    device_id: 2c48734a3acd393a8dcc7d2bed0cf68f
+    entity_id: d890cdfd11a38b481b5ce6d80dcc8186
+    domain: switch
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      device_id: 2c48734a3acd393a8dcc7d2bed0cf68f
+    data: {}
+  mode: single
+- id: '1771074543969'
+  alias: Stehlampe WoZi
+  description: ''
+  use_blueprint:
+    path: censay/ikea-bilresa-e2489-matter-smart-button.yaml
+    input:
+      target_device: c051540fe3d25cb6486b17adf3dd65fa
+      button1_event: event.bilresa_dual_button_taste_1_2
+      button2_event: event.bilresa_dual_button_taste_2_2
+      button1_single:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_1
+        data: {}
+      button2_single:
+      - action: switch.turn_off
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_1
+        data: {}
+- id: '1771612913799'
+  alias: Wendeltreppe Bewegung 1a
+  description: ''
+  use_blueprint:
+    path: aledziko/ikea-myggspray-e2494-matter-motion-sensor.yaml
+    input:
+      motion_entity: binary_sensor.myggspray_wrlss_mtn_sensor_belegung
+      use_time_window: true
+      active_start_time: '17:30:00'
+      active_end_time: '23:59:59'
+      motion_on_action:
+      - action: switch.turn_on
+        metadata: {}
+        target:
+          entity_id: switch.steckdose_2
+        data: {}
+      motion_off_action: []
+      no_motion_wait: 900
+      illuminance_entity: sensor.myggspray_wrlss_mtn_sensor_beleuchtungsstarke
+      motion_cutoff: 10

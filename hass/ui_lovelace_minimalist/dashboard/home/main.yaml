@@ -45,6 +45,8 @@ cards:
 
   # Include popups
   - !include "popups/climate.yaml"
+  - !include "popups/stats.yaml"
   - !include "popups/network.yaml"
   - !include "popups/tim.yaml"
   - !include "popups/dad.yaml"
+  - !include "popups/top.yaml"
