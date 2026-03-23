@@ -16,7 +16,7 @@ counter: !include "config/counters.yaml"
 homekit: !include "config/homekit.yaml"
 input_select: !include "config/input_selects.yaml"
 input_text: !include "config/input_texts.yaml"
-scene: !include "config/scenes.yaml"
+light: !include "config/lights.yaml"
 script: !include "config/scripts.yaml"
 sensor: !include "config/sensors.yaml"
 shell_command: !include "config/shell_commands.yaml"
@@ -48,3 +48,34 @@ wake_on_lan:
 additional_ca:
   # Add from /config/additional_ca
   private_root_ca: "root_CA.crt"
+recorder:
+  # Hold detailed data for 30 days, then purge it
+  purge_keep_days: 30
+
+python_script:
+
+template:
+  - binary_sensor:
+      - name: "Waschmaschine"
+        unique_id: "Waschmaschine"
+        state: ""
+        device_class: running
+        icon: mdi:washing-machine
+  - binary_sensor:
+      - name: "Eingangstuer"
+        unique_id: "eingangstur"
+        state: ""
+        device_class: running
+        icon: mdi:door-open
+  - binary_sensor:
+      - name: "Schiebetuer"
+        unique_id: "schiebetur"
+        state: ""
+        device_class: running
+        icon: mdi:door-open
+  - binary_sensor:
+      - name: "Garagentor"
+        unique_id: "garagentor"
+        state: ""
+        device_class: running
+        icon: mdi:door-open

@@ -1,0 +1,27 @@
+---
+
+# Group "Decke"
+- platform: group
+  name: "Decke"
+  unique_id: "decke"
+  entities:
+    - light.decke1
+    - light.decke2
+
+# Group "Monitor"
+- platform: group
+  name: "Monitor"
+  unique_id: "monitor"
+  entities:
+    - light.monitor_links
+    - light.monitor_rechts
+
+# Group all lights in area "Tim" to a single entity
+- platform: group
+  name: "Tim"
+  unique_id: "tim"
+  entities:
+    - light.decke
+    - light.bett
+    - light.monitor
+    - light.regal

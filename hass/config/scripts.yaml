@@ -1,7 +1,42 @@
 ---
 
-activate_scene_arbeiten:
+tim_arbeiten:
+  alias: "Tim Arbeiten"
   sequence:
     - action: scene.turn_on
       target:
-        entity_id: scene.arbeiten
+        entity_id: scene.philips_tim_arbeiten
+
+tim_aus:
+  alias: "Tim Aus"
+  sequence:
+    - action: light.turn_off
+      target:
+        entity_id: light.tim
+    - action: light.turn_off
+      target:
+        entity_id: light.wiz_fernseher
+
+tim_lila:
+  alias: "Tim Lila"
+  sequence:
+    - action: scene.turn_on
+      target:
+        entity_id: scene.philips_tim_lila
+
+tim_nacht:
+  alias: "Tim Nacht"
+  sequence:
+    - action: scene.turn_on
+      target:
+        entity_id: scene.philips_tim_nacht
+
+tim_computer:
+  alias: "Tim Computer"
+  sequence:
+    - action: scene.turn_on
+      target:
+        entity_id: scene.philips_tim_arbeiten
+    - action: switch.turn_on
+      target:
+        entity_id: switch.wol_tim_win10
