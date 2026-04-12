@@ -6,22 +6,18 @@ template_card_frigate:
   card:
     type: custom:advanced-camera-card
     cameras:
-      - camera_entity: "camera.[[camera1]]"
-        frigate:
-          camera_name: "[[camera1]]"
-        live_provider: go2rtc
-        # Use webrtc for two way audio and _sub to get stream with lower quality
-        go2rtc:
-          stream: "[[camera1]]_sub"
-          modes:
-            - webrtc
+      # - camera_entity: "camera.[[camera1]]"
+      #   live_provider: go2rtc
+      #   # Use webrtc for two way audio and _live to get stream with lower quality
+      #   go2rtc:
+      #     stream: "[[camera1]]_live"
+      #     modes:
+      #       - webrtc
       - camera_entity: "camera.[[camera2]]"
-        frigate:
-          camera_name: "[[camera2]]"
         live_provider: go2rtc
-        # Use webrtc for two way audio and _sub to get stream with lower quality
+        # Use webrtc for two way audio and _live to get stream with lower quality
         go2rtc:
-          stream: "[[camera2]]_sub"
+          stream: "[[camera2]]_live"
           modes:
             - webrtc
     # Stop card from changing its height when loading stream
@@ -41,6 +37,9 @@ template_card_frigate:
         - selected # when camera is selected in carousel grid
         - visible # when camera becomes visible (e.g. browser tab change)
       auto_unmute: [] # don't auto unmute ever
+      microphone:
+        # Prevent double load of stream. See: https://card.camera/#/configuration/live?id=microphone
+        always_connected: true
       lazy_load: true
       preload: false
     media_viewer:

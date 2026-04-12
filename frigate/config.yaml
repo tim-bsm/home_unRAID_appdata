@@ -14,19 +14,22 @@ tls:
 
 ffmpeg:
   hwaccel_args: preset-vaapi
+  output_args:
+    record: preset-record-generic-audio-copy  # record audio
 
 detectors:
   coral:
     type: edgetpu
     device: pci
+detect:
+  enabled: true
+  width: 1280
+  height: 720
+  fps: 5
 
 record:
   enabled: true
   # When any motion is detected
-  retain:
-    days: 7
-    mode: motion
-  # When a special motion (object) is detected
   alerts:
     retain:
       days: 30
@@ -34,6 +37,10 @@ record:
   detections:
     retain:
       days: 90
+  continuous:
+    days: 0
+  motion:
+    days: 7
 snapshots:
   enabled: true
   retain:
@@ -41,69 +48,62 @@ snapshots:
 
 go2rtc:
   streams:
-    reolink1_main:
+    reolink1_record:
       - rtsp://{FRIGATE_REOLINK1_USER}:{FRIGATE_REOLINK1_PASSWORD}@{FRIGATE_REOLINK1_IP}/Preview_01_main
-      # - ffmpeg:reolink1#video=copy#audio=copy#audio=opus
+      - ffmpeg:reolink1_record#input=rtsp/tcp#audio=opus
+    reolink1_live:
+      - rtsp://{FRIGATE_REOLINK1_USER}:{FRIGATE_REOLINK1_PASSWORD}@{FRIGATE_REOLINK1_IP}/Preview_01_sub #backchannel=0
+      # https://docs.frigate.video/configuration/camera_specific/#reolink-cameras
       # https://github.com/blakeblackshear/frigate/issues/9159#issuecomment-1881147182
-      - ffmpeg:reolink1_main#input=rtsp/udp#hardware
-    reolink1_sub:
-      - rtsp://{FRIGATE_REOLINK1_USER}:{FRIGATE_REOLINK1_PASSWORD}@{FRIGATE_REOLINK1_IP}/Preview_01_sub
-      - ffmpeg:reolink1_sub#input=rtsp/udp#audio=copy#audio=opus#hardware
-      # - ffmpeg:reolink1_sub#video=copy#audio=copy#audio=opus#hardware
-    # reolink2_main:
-    #   - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_main
-    #   # https://github.com/blakeblackshear/frigate/issues/9159#issuecomment-1881147182
-    #   - ffmpeg:reolink2_main#input=rtsp/udp#hardware
-    # reolink2_sub:
-    #   - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_sub
-    #   - ffmpeg:reolink2_sub#input=rtsp/udp#audio=copy#audio=opus#hardware
+      - ffmpeg:reolink1_live#input=rtsp/udp#audio=copy#audio=opus
+    reolink1_detect:
+      - ffmpeg:reolink1_live
+    
+    reolink2_record:
+      - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_main
+      - ffmpeg:reolink2_record#input=rtsp/tcp#audio=opus
+    reolink2_live:
+      - rtsp://{FRIGATE_REOLINK2_USER}:{FRIGATE_REOLINK2_PASSWORD}@{FRIGATE_REOLINK2_IP}/Preview_01_sub #backchannel=0
+      # https://docs.frigate.video/configuration/camera_specific/#reolink-cameras
+      # https://github.com/blakeblackshear/frigate/issues/9159#issuecomment-1881147182
+      - ffmpeg:reolink2_live#input=rtsp/udp#audio=copy#audio=opus
+    reolink2_detect:
+      - ffmpeg:reolink2_live
 
 cameras:
   reolink1:
     enabled: true
     ffmpeg:
-      output_args:
-        record: preset-record-generic-audio-copy  # record audio
       inputs:
-        - path: rtsp://127.0.0.1:8554/reolink1_main
+        - path: rtsp://127.0.0.1:8554/reolink1_record
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://127.0.0.1:8554/reolink1_sub
+        - path: rtsp://127.0.0.1:8554/reolink1_detect
           input_args: preset-rtsp-restream
           roles:
             - detect
-    detect:
-      enabled: true
-      fps: 5
     live:
       streams:
-        reolink1_sub: reolink1_sub
+        reolink1_record: reolink1_record
     motion:
       mask: 0.384,0.015,0.6,0.015,0.601,0.071,0.386,0.068
 
-  # reolink2:
-  #   enabled: true
-  #   ffmpeg:
-  #     output_args:
-  #       record: preset-record-generic-audio-copy  # record audio
-  #     inputs:
-  #       - path: rtsp://127.0.0.1:8554/reolink2_main
-  #         input_args: preset-rtsp-restream
-  #         roles:
-  #           - record
-  #       - path: rtsp://127.0.0.1:8554/reolink2_sub
-  #         input_args: preset-rtsp-restream
-  #         roles:
-  #           - detect
-  #   detect:
-  #     enabled: true
-  #     fps: 5
-  #   live:
-  #     streams:
-  #       reolink2_sub: reolink2_sub
-  #   motion:
-  #     mask: 0.389,0.015,0.599,0.015,0.599,0.064,0.39,0.066
-version: 0.16-0
-detect:
-  enabled: true
+  reolink2:
+    enabled: false
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/reolink2_record
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/reolink2_detect
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    live:
+      streams:
+        reolink2_record: reolink2_record
+    motion:
+      mask: 0.389,0.015,0.599,0.015,0.599,0.064,0.39,0.066
+version: 0.17-0

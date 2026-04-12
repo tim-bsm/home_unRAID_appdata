@@ -21,6 +21,15 @@ entryPoints:
         entryPoint:
           to: https                           # The target element
           scheme: https                       # The redirection target scheme
+      # https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values
+      encodedCharacters:
+        allowEncodedSlash: false
+        allowEncodedBackSlash: false
+        allowEncodedNullCharacter: false
+        allowEncodedSemicolon: false
+        allowEncodedPercent: false
+        allowEncodedQuestionMark: false
+        allowEncodedHash: false
   https:
     address: :443                             # Create the HTTPS entrypoint on port 443
     asDefault: true                           # Use https as default entrypoint
@@ -28,6 +37,15 @@ entryPoints:
       tls: true                               # Enable TLS by default
       middlewares:
         - default@file                        # Set 'default' middleware from config.yml as default
+      # https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values
+      encodedCharacters:
+        allowEncodedSlash: false
+        allowEncodedBackSlash: false
+        allowEncodedNullCharacter: false
+        allowEncodedSemicolon: false
+        allowEncodedPercent: false
+        allowEncodedQuestionMark: false
+        allowEncodedHash: false
 
   # TCP/UDP
   mqtt:
@@ -38,7 +56,7 @@ entryPoints:
 #   insecureSkipVerify: true                              # Allow insecure backend connections
 
 log:
-  level: DEBUG                                # DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+  level: INFO                                # DEBUG, INFO, WARN, ERROR, FATAL, PANIC
   # Uncomment if normal logs should be written to a file instead of std_out thus not being able to view in unRAID console
   # filePath: "/logs/traefik.log"               # Path to the log file
 
