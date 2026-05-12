@@ -1,0 +1,62 @@
+#!/bin/bash
+# This script is used to copy the .XML-files (created by
+# unRAID when deploying a new container) into this repository
+# and modify the <WebUI> tag as required, if it exists.
+
+SRC_PATH=/boot/config/plugins/compose.manager/projects
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+REPLACE_HOSTNAME="eghostname"
+
+
+# Replaces the domain in the net.unraid.docker.webui tag with the provided hostname, if not empty
+replace_intra_domain() {
+    local file="$1"
+
+    echo "Modifying tags in $file."
+
+    sed -i -E \
+        "/net\.unraid\.docker\.webui/{ /''$/! s|(https?://[^.]+\.)[^']+|\1${REPLACE_HOSTNAME}|g }" \
+        "$file"
+}
+
+change_webui_file_intra_domain() {
+    local file="$1"
+
+    [[ ! -f "$file" ]] && return 0
+    [[ ! -s "$file" ]] && return 0
+
+    echo "Removing hostname from $file."
+
+    sed -i -E \
+        "s|(https?://[^.]+\.)[^'\"[:space:]]+|\1${REPLACE_HOSTNAME}|g" \
+        "$file"
+}
+
+
+if [ -d "$SRC_PATH" ]; then
+    echo "Copying files from $SRC_PATH to $SCRIPT_DIR ..."
+    rsync -av "$SRC_PATH" "$SCRIPT_DIR" --exclude='last_cmd.log' --exclude='last_result.json' --exclude='started_at'
+    echo ""
+
+    # Enable globstar to allow recursive globbing with ** in the for loop
+    shopt -s globstar
+
+    for file in "$SCRIPT_DIR"/**/compose.override.yaml; do
+        if [ -f "$file" ]; then
+            replace_intra_domain "$file"
+        fi
+    done
+    
+    for file in "$SCRIPT_DIR"/**/webui_url; do
+        if [ -f "$file" ]; then
+            change_webui_file_intra_domain "$file"
+        fi
+    done
+
+    echo ""
+    echo "Done - Please check the copied files in $SCRIPT_DIR."
+    exit 0
+else
+    echo "The path $SRC_PATH does not exist. Please check your unRAID configuration."
+    exit 1
+fi

@@ -1,0 +1,3 @@
+# Allow the following directories/files for this directory
+!get_new
+!projects/**

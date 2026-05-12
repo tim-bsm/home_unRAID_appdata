@@ -1,0 +1,25 @@
+services:
+  immich:
+    labels:
+      net.unraid.docker.managed: 'composeman'
+      net.unraid.docker.icon: 'https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg'
+      net.unraid.docker.webui: 'https://immich.eghostname'
+      net.unraid.docker.shell: ''
+  immich-machine-learning:
+    labels:
+      net.unraid.docker.managed: 'composeman'
+      net.unraid.docker.icon: 'https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg'
+      net.unraid.docker.webui: ''
+      net.unraid.docker.shell: ''
+  immich-redis:
+    labels:
+      net.unraid.docker.managed: 'composeman'
+      net.unraid.docker.icon: 'https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg'
+      net.unraid.docker.webui: ''
+      net.unraid.docker.shell: ''
+  immich-database:
+    labels:
+      net.unraid.docker.managed: 'composeman'
+      net.unraid.docker.icon: 'https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg'
+      net.unraid.docker.webui: ''
+      net.unraid.docker.shell: ''

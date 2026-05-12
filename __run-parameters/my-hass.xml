@@ -9,15 +9,16 @@
   <Privileged>false</Privileged>
   <Support>https://www.home-assistant.io/help/</Support>
   <Project>https://www.home-assistant.io</Project>
+  <ReadMe/>
   <Overview>Home Assistant Container runs the core of the Home Assistant home automation platform. It focuses on local control and privacy. Track and control all devices at home and automate control.</Overview>
   <Category>HomeAutomation:</Category>
   <WebUI>https://hass.eghostname</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
-  <ExtraParams>--env-file /mnt/user/appdata/__shared/env-files/hass.env --label-file /mnt/user/appdata/__shared/label-files/hass</ExtraParams>
+  <ExtraParams>--env-file /mnt/user/appdata/__shared/env-files/hass.env --label-file /mnt/user/appdata/__shared/label-files/hass --cap-add NET_ADMIN --cap-add NET_RAW</ExtraParams>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1766698811</DateInstalled>
+  <DateInstalled>1777986650</DateInstalled>
   <DonateText/>
   <DonateLink/>
   <Requires/>
