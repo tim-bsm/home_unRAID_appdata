@@ -76,7 +76,7 @@ providers:
     endpoint: "unix:///var/run/docker.sock"                     # Listen to the UNIX Docker socket
     exposedByDefault: false                                     # Only expose container that are explicitly enabled (using label traefik.enabled)
     network: "traefik-net"                                      # Default network to use for connections to all containers.
-    defaultRule: Host(`{{ .Name }}.{{ env "TRAEFIK_HOST" }}`)   # If no URL is given, use the Docker service name
+    defaultRule: Host(`{{ .ContainerName }}.{{ env "TRAEFIK_HOST" }}`)   # If no URL is given, use the Docker service name
   
   file:
     filename: "/etc/traefik/config.yml"       # Link to the dynamic configuration

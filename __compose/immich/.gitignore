@@ -1,3 +1,4 @@
 # Allow the following directories/files for this directory
-!get_new
-!*.xml
+!*.yaml
+!*.labels
+!*_templ*

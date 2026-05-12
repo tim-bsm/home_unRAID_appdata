@@ -1,8 +1,13 @@
 # Ignore everything
 *
 # But also scan subdirectories
-!*/
+!**/
 
 # Allow specific files and directories
-!*/.gitignore
-!*/README.md
+!**/.gitignore
+!**/README.md
+
+# Remove specific files/directories and directories from being allowed
+hass/custom_components/hacs/validate/README.md
+hass/custom_components/homematicip_local/.idea/.gitignore
+hass/custom_components/ui_lovelace_minimalist/.gitignore

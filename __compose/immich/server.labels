@@ -1,0 +1,6 @@
+# > Traefik
+traefik.enable=true
+traefik.http.services.immich.loadbalancer.server.port=2283
+# https://docs.immich.app/administration/reverse-proxy#traefik-proxy-example-config
+traefik.transport.respondingTimeouts.readTimeout=600s
+traefik.transport.respondingTimeouts.idleTimeout=600s
