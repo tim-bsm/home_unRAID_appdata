@@ -23,13 +23,6 @@ shell_command: !include "config/shell_commands.yaml"
 switch: !include "config/switches.yaml"
 waste_collection_schedule: !include "config/waste.yaml"
 
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    #- "0.0.0.0/0" # Wildcard for all Proxies -> !ONLY DURING TESTING!
-    - !env_var HASS_TRAEFIK_IP # Add traefik proxy
-
-
 ###
 # Activate Integrations for yaml
 ###
@@ -68,6 +61,12 @@ template:
         device_class: running
         icon: mdi:door-open
   - binary_sensor:
+      - name: "OmaEingang"
+        unique_id: "omaeingang"
+        state: ""
+        device_class: running
+        icon: mdi:door-open
+  - binary_sensor:
       - name: "Schiebetuer"
         unique_id: "schiebetur"
         state: ""
@@ -79,3 +78,21 @@ template:
         state: ""
         device_class: running
         icon: mdi:door-open
+  - binary_sensor:
+      - name: "OmaGarage"
+        unique_id: "omagarage"
+        state: ""
+        device_class: running
+        icon: mdi:door-open
+  - binary_sensor:
+      - name: "OmaMarkise"
+        unique_id: "omamarkise"
+        state: ""
+        device_class: running
+        icon: mdi:awning-outline
+  - binary_sensor:
+      - name: "Garagenlicht"
+        unique_id: "garagenlicht"
+        state: ""
+        device_class: running
+        icon: mdi:lightbulb
