@@ -37,15 +37,23 @@ For the initial upload of photos, use the code in the following [CLI section](#c
 To connect to the immich server and upload local files for example, the immich-cli can be used. As the underlying system is an unRAID install, the immich-cli docker container will be used.  
 To setup the `npm` package or the container, see the [official docs](https://docs.immich.app/features/command-line-interface/) or [this reddit post](https://www.reddit.com/r/immich/comments/1ih496q/immich_cli_on_docker_guide) for the docker container in particular. 
 
-The following command is used to upload the directory in which the command gets executed. To check the execution of the command without anything really happening/executing, add `--dry-run` behind `output` in the last line.
+The following command is used to upload the directory in which the command gets executed. To check the execution of the command without anything really happening/executing, add `--dry-run` behind `upload` in the first line of the second half.
 
 ```bash
 sudo docker run -it --rm \
---name immich-cli \ 
 -v "$(pwd)":/import:ro \
 -e IMMICH\_INSTANCE\_URL=http://immich:2283/api \
 -e IMMICH\_API\_KEY=YOUR\_API\_KEY \
 --network immich-net \
 ghcr.io/immich-app/immich-cli:latest \
-upload --recursive --concurrency 20 /import
+\
+upload \
+--ignore "**/.picasaoriginals/**" \
+--ignore "**/*.PAR" \
+--ignore "**/*.P0*" \
+--ignore "**/*.P1*" \
+--ignore "**/*.P2*" \
+--recursive \
+--concurrency 20 \
+/import
 ```
