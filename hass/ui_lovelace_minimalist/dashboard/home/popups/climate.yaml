@@ -3,28 +3,25 @@
 # This pop-up shows all climate entities in the house.
 view_layout:
   grid-area: "popup"
-type: "vertical-stack"
+type: "custom:bubble-card"
+card_type: "pop-up"
+hash: "#climate"
+name: "Climate"
+icon: "mdi:home-thermometer-outline"
+width_desktop: "80%"
+shadow_opacity: 70
+# Make bubble card look similar to minimalist
+styles: |
+  .bubble-button-card-container {
+    background: var(--card-background-color) !important;
+  }
+  .bubble-icon {
+    opacity: 1 !important;
+  }
+  .bubble-close-button{
+    background: var(--card-background-color) !important;
+  }
 cards:
-  # Use custom:bubble-card to create a pop-up
-  - type: "custom:bubble-card"
-    card_type: "pop-up"
-    hash: "#climate"
-    name: "Climate"
-    icon: "mdi:home-thermometer-outline"
-    width_desktop: "80%"
-    shadow_opacity: 70
-    # Make bubble card look similar to minimalist
-    styles: |
-      .bubble-button-card-container {
-        background: var(--card-background-color) !important;
-      }
-      .bubble-icon {
-        opacity: 1 !important;
-      }
-      .bubble-close-button{
-        background: var(--card-background-color) !important;
-      }
-  
   # Create select to choose which climate to show
   - type: "custom:bubble-card"
     card_type: "select"

@@ -3,30 +3,26 @@
 # This pop-up shows all entities of the specific room.
 view_layout:
   grid-area: "popup"
-type: "vertical-stack"
+type: "custom:bubble-card"
+card_type: "pop-up"
+hash: "#tim"
+name: "Tim"
+entity: "scene.tim_aus"
+icon: "mdi:nintendo-game-boy"
+width_desktop: "80%"
+shadow_opacity: 70
+# Make bubble card look similar to minimalist
+styles: |
+  .bubble-button-card-container {
+    background: var(--card-background-color) !important;
+  }
+  .bubble-icon {
+    opacity: 1 !important;
+  }
+  .bubble-close-button{
+    background: var(--card-background-color) !important;
+  }
 cards:
-  # Use custom:bubble-card to create a pop-up
-  - type: "custom:bubble-card"
-    card_type: "pop-up"
-    hash: "#tim"
-    name: "Tim"
-    entity: "scene.tim_aus"
-    icon: "mdi:nintendo-game-boy"
-    width_desktop: "80%"
-    shadow_opacity: 70
-    # Make bubble card look similar to minimalist
-    styles: |
-      .bubble-button-card-container {
-        background: var(--card-background-color) !important;
-      }
-      .bubble-icon {
-        opacity: 1 !important;
-      }
-      .bubble-close-button{
-        background: var(--card-background-color) !important;
-      }
-      
-  
   ###
   # Media tab
   ###
@@ -136,4 +132,11 @@ cards:
       - sensor_temperature: "sensor.tim_lufter_temperature"
       - sensor_quality: "sensor.tim_lufter_air_quality_index"
       - sensor_humidity: "sensor.tim_lufter_humidity"
+  
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_battery"
+    variables:
+      - name: "Lufter Batterie"
+      - sensor: "sensor.tim_lufter_battery_level"
   

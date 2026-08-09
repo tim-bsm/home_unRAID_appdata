@@ -3,28 +3,25 @@
 # Show network specific settings and infos in pop-up
 view_layout:
   grid-area: "popup"
-type: "vertical-stack"
+type: "custom:bubble-card"
+card_type: "pop-up"
+hash: "#network"
+name: "Network"
+icon: "mdi:lan"
+width_desktop: "80%"
+shadow_opacity: 70
+# Make bubble card look similar to minimalist
+styles: |
+  .bubble-button-card-container {
+    background: var(--card-background-color) !important;
+  }
+  .bubble-icon {
+    opacity: 1 !important;
+  }
+  .bubble-close-button{
+    background: var(--card-background-color) !important;
+  }
 cards:
-  - type: "custom:bubble-card"
-    card_type: "pop-up"
-    hash: "#network"
-    name: "Network"
-    icon: "mdi:lan"
-    width_desktop: "80%"
-    shadow_opacity: 70
-    # Make bubble card look similar to minimalist
-    styles: |
-      .bubble-button-card-container {
-        background: var(--card-background-color) !important;
-      }
-      .bubble-icon {
-        opacity: 1 !important;
-      }
-      .bubble-close-button{
-        background: var(--card-background-color) !important;
-      }
-      
-  
   ###
   # WiFi QR code tab
   ###

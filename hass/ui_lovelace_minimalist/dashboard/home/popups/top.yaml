@@ -3,33 +3,61 @@
 # This pop-up shows all entities of the specific room.
 view_layout:
   grid-area: "popup"
-type: "vertical-stack"
+type: "custom:bubble-card"
+card_type: "pop-up"
+hash: "#top"
+name: "Oben"
+icon: "mdi:stairs-up"
+width_desktop: "80%"
+shadow_opacity: 70
+# Make bubble card look similar to minimalist
+styles: |
+  .bubble-button-card-container {
+    background: var(--card-background-color) !important;
+  }
+  .bubble-icon {
+    opacity: 1 !important;
+  }
+  .bubble-close-button{
+    background: var(--card-background-color) !important;
+  }
 cards:
-  # Use custom:bubble-card to create a pop-up
-  - type: "custom:bubble-card"
-    card_type: "pop-up"
-    hash: "#top"
-    name: "Oben"
-    icon: "mdi:stairs-up"
-    width_desktop: "80%"
-    shadow_opacity: 70
-    # Make bubble card look similar to minimalist
-    styles: |
-      .bubble-button-card-container {
-        background: var(--card-background-color) !important;
-      }
-      .bubble-icon {
-        opacity: 1 !important;
-      }
-      .bubble-close-button{
-        background: var(--card-background-color) !important;
-      }
-  
   # Add stairs light
   - type: "custom:decluttering-card"
     # Use template defined in ../templates
     template: "template_card_bubble_light"
     variables:
-      - entity: "switch.steckdose_2"
+      - entity: "switch.grillplats_plug_3"
       - name: "Treppenlicht"
       - icon: "mdi:led-strip-variant"
+
+  # Temperatur Marisa
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_graph"
+    variables:
+      - name: "Temperatur Marisa"
+      - sensor: "sensor.hmip_th_marisa_temperatur"
+      - color: "red"
+      - hours: 24
+
+  # Temperatur Claudia
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_graph"
+    variables:
+      - name: "Temperatur Claudia"
+      - sensor: "sensor.hmip_th_claudia_bad_temperatur"
+      - color: "red"
+      - hours: 24
+
+  # Temperatur draussen
+  - type: "custom:decluttering-card"
+    # Use template defined in ../templates
+    template: "template_card_graph"
+    variables:
+      - name: "Temperatur draussen"
+      - sensor: "sensor.windy_temperatur"
+      - color: "red"
+      - hours: 24
+
