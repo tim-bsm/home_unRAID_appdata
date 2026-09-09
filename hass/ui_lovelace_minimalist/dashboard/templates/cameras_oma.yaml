@@ -1,0 +1,51 @@
+---
+
+# Define a template for a card that controls multiple camera entities with two-way-audio.
+# This template can be reused by setting the variables (e.g. "[[variable_name]]") accordingly.
+template_card_cameras_oma:
+  card:
+    type: custom:advanced-camera-card
+    cameras:
+      - camera_entity: "camera.[[camera1]]"
+      - camera_entity: "camera.[[camera2]]"
+    # Stop card from changing its height when loading stream
+    dimensions:
+      aspect_ratio_mode: static
+      aspect_ratio: "16:9"
+    live:
+      # Don't show hamburger menu on the right
+      controls:
+        thumbnails:
+          mode: none
+      auto_pause: [] # don't auto pause ever
+      auto_play:
+        - selected # when camera is selected in carousel grid
+        - visible # when camera becomes visible (e.g. browser tab change)
+      auto_unmute: [] # don't auto unmute ever
+      lazy_load: true
+      preload: false
+    media_viewer:
+      auto_pause:
+        - unselected # when media is unselected in carousel grid
+        - hidden # when media becomes hidden (e.g. browser tab change)
+    view:
+      actions:
+        # Fullscreen on double tap
+        double_tap_action:
+          action: custom:advanced-camera-card-action
+          advanced_camera_card_action: fullscreen
+    menu:
+      buttons:
+        cameras:
+          enabled: false
+        clips:
+          enabled: false
+        display_mode:
+          enabled: false
+        microphone:
+          enabled: false
+        snapshots:
+          enabled: false
+        timeline:
+          enabled: false
+    

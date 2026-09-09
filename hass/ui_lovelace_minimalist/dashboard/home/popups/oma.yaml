@@ -1,0 +1,32 @@
+---
+
+# This pop-up shows all entities of the specific room.
+view_layout:
+  grid-area: "popup"
+type: "custom:bubble-card"
+card_type: "pop-up"
+hash: "#oma"
+name: "Oma"
+icon: "mdi:stairs-down"
+width_desktop: "80%"
+shadow_opacity: 70
+# Make bubble card look similar to minimalist
+styles: |
+  .bubble-button-card-container {
+    background: var(--card-background-color) !important;
+  }
+  .bubble-icon {
+    opacity: 1 !important;
+  }
+  .bubble-close-button{
+    background: var(--card-background-color) !important;
+  }
+cards:
+  # Add cameras
+  - type: custom:decluttering-card
+    # Use template defined in ../templates
+    template: template_card_cameras_oma
+    variables:
+      # Show camera 2 before camera 1 in carousel
+      - camera1: oma_flur_standardauflosung
+      - camera2: oma_wozi_standardauflosung

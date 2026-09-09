@@ -50,3 +50,4 @@ cards:
   - !include "popups/tim.yaml"
   - !include "popups/dad.yaml"
   - !include "popups/top.yaml"
+  - !include "popups/oma.yaml"
