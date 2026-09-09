@@ -713,12 +713,12 @@
     path: aledziko/ikea-myggbett-e2492-matter-door-sensor.yaml
     input:
       door_entity: binary_sensor.xinge_flur_sensor_oma_eingang_tur
-      wait_opened_long: 1800
+      wait_opened_long: 300
       action_opened_long:
       - action: notify.notify
         metadata: {}
         data:
-          message: Omas Eingangstür ist seit 30 Minuten offen.
+          message: Omas Eingangstür ist seit 5 Minuten offen.
       - action: python_script.set_state
         metadata: {}
         data:
