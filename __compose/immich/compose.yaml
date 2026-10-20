@@ -47,8 +47,9 @@ services:
       service: openvino # set to one of [armnn, cuda, rocm, openvino, openvino-wsl, rknn] for accelerated inference - use the `-wsl` version for WSL2 where applicable
     volumes:
       - model-cache:/cache
-    env_file:
-      - .env
+    environment:
+      # Same machine learning models in an optimized format
+      MACHINE_LEARNING_MODEL_REVISION: v2
     networks:
       - immich-net
     restart: always
@@ -57,11 +58,11 @@ services:
 
   immich-redis:
     container_name: immich-redis
-    image: docker.io/valkey/valkey:9@sha256:3b55fbaa0cd93cf0d9d961f405e4dfcc70efe325e2d84da207a0a8e6d8fde4f9
+    image: docker.io/valkey/valkey:9@sha256:418652cfb58ef879d4978c33553735d7147016032d5aefaa14c828e611eb9dfd
     networks:
       - immich-net
     healthcheck:
-      test: redis-cli ping || exit 1
+      test: redis-cli ping | grep -q PONG || exit 1
     restart: always
 
   immich-database:
