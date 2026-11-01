@@ -21,6 +21,7 @@ entryPoints:
         entryPoint:
           to: https                           # The target element
           scheme: https                       # The redirection target scheme
+      aliasHeadersStrategy: delete            # Delete wrong headers to prevent spoofing attacks
       # https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values
       encodedCharacters:
         allowEncodedSlash: false
@@ -37,6 +38,7 @@ entryPoints:
       tls: true                               # Enable TLS by default
       middlewares:
         - default@file                        # Set 'default' middleware from config.yml as default
+      aliasHeadersStrategy: delete            # Delete wrong headers to prevent spoofing attacks
       # https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values
       encodedCharacters:
         allowEncodedSlash: false
@@ -50,6 +52,8 @@ entryPoints:
   # TCP/UDP
   mqtt:
     address: :8883
+    http:
+      aliasHeadersStrategy: delete            # Delete wrong headers to prevent spoofing attacks
 
 
 # serversTransports:
@@ -81,4 +85,4 @@ providers:
   file:
     filename: "/etc/traefik/config.yml"       # Link to the dynamic configuration
     watch: true                               # Watch for modifications
-  providersThrottleDuration: 10               # Configuration reload frequency
+  providersThrottleDuration: 10s              # Configuration reload frequency
