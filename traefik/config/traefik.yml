@@ -50,11 +50,10 @@ entryPoints:
         allowEncodedHash: false
 
   # TCP/UDP
-  mqtt:
+  mqtts:
     address: :8883
-    http:
-      aliasHeadersStrategy: delete            # Delete wrong headers to prevent spoofing attacks
-
+  mqtt:
+    address: :1883
 
 # serversTransports:
 #   insecureSkipVerify: true                              # Allow insecure backend connections
@@ -65,9 +64,9 @@ log:
   # filePath: "/logs/traefik.log"               # Path to the log file
 
 # accessLog:
-#   filePath: "/logs/access.log"                # Path to the file
-#   format: json                                
-#   bufferingSize: 0                            # How many logs should be buffered until written to the file
+#    filePath: "/logs/access.log"                # Path to the file
+#    format: json
+#    bufferingSize: 0                            # How many logs should be buffered until written to the file
 #   # filters:
 #   #   statusCodes:                              # Limit logging to the following codes
 #   #     - "200"
